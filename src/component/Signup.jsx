@@ -1,22 +1,88 @@
 import React from 'react';
 import FormHeader from './FormHeader';
-import { Center, Image } from '@chakra-ui/react';
+
+import {
+  Center,
+  FormControl,
+  FormLabel,
+  Image,
+  Stack,
+  VStack,
+  Input,
+  Button,
+  Text,
+  Link,
+} from '@chakra-ui/react';
 import SignupImage from '../assets/signup.png';
+import { PasswordField } from './PasswordField';
 
 const Signup = () => {
   return (
-    <div className='flex flex-col md:flex-row h-screen relative'>
+    <div className='flex flex-col md:flex-row h-screen relative w-full'>
       <FormHeader />
-      <div className='bg-[#5720DD] md:h-screen h-1/3  md:w-2/6  w-full'>
-        <Center className='h-full ml-[6rem]'>
+      <div className='bg-[#5720DD] md:h-screen h-1/3 x md:w-2/6 w-full'>
+        <Center className='md:h-full md:ml-[6rem] pt-5 overflow-x-hidden mt-20 md:mt-0'>
           <Image
             src={SignupImage}
-            className='w-[786px] h-[500px] object-cover rounded-md'
+            className=' w-[20rem] md:w-[55rem] md:h-[24rem] xl:h-[31rem] object-cover rounded-md'
           />
         </Center>
       </div>
-      <div className='md:w-4/6 bg-white h-2/3 md:h-screen'>
-        <Center className='h-full'>Good</Center>
+      <div className='md:w-4/6 bg-white h-2/3 md:h-screen w-full '>
+        <Center className='h-full flex-col mt-[4rem] md:mt-0 lg:mt-4 xl:mt-0 lg:px-[5rem] xl:px-[8rem]  xl:gap-5 w-full'>
+          <Link
+            color='#5720DD'
+            alignSelf='flex-end'
+            mr={5}
+            visibility={{ base: 'vissible', sm: 'hidden' }}
+          >
+            <Text as='u'> Need Any Help?</Text>
+          </Link>
+          <Text className=' self-start px-10 text-3xl font-semibold'>
+            Register Account
+          </Text>
+          <VStack as='form' spacing={8} w='100%' p={{ base: 5, sm: 10 }}>
+            <VStack spacing='2rem' w='100%'>
+              <Stack
+                w='100%'
+                spacing={{ base: 8, md: 3 }}
+                direction={{ base: 'column', md: 'row' }}
+              >
+                <FormControl variant='floating' id='first-name'>
+                  <Input placeholder=' ' height='56px' />
+                  <FormLabel className='text-gray-500 '>First name</FormLabel>
+                </FormControl>
+                <FormControl variant='floating' id='last-name'>
+                  <Input placeholder=' ' height='56px' />
+                  <FormLabel className='text-gray-500'>Last name</FormLabel>
+                </FormControl>
+              </Stack>
+              <FormControl variant='floating' id='last-name'>
+                <Input
+                  placeholder=' '
+                  type='email'
+                  height='56px'
+                  pt={4}
+                  px={2.5}
+                  pb={2.5}
+                />
+                <FormLabel className='text-gray-500'>Email Address</FormLabel>
+              </FormControl>
+              <PasswordField />
+            </VStack>
+            <VStack w='100%'>
+              <Button
+                bg='#c8c8c8'
+                color='white'
+                rounded='md'
+                w={{ base: '100%' }}
+                height='56px'
+              >
+                Register Account
+              </Button>
+            </VStack>
+          </VStack>
+        </Center>
       </div>
     </div>
   );

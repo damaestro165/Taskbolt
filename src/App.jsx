@@ -13,7 +13,7 @@ import Signup from './component/Signup';
 function App() {
   const Root = () => {
     return (
-      <Box className='container h-screen'>
+      <Box className='container h-screen w-full'>
         <Outlet />
       </Box>
     );
