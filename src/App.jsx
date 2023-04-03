@@ -8,7 +8,8 @@ import {
   Navigate,
   Outlet,
 } from 'react-router-dom';
-import Signup from './component/Signup';
+import Signup from './SignupPage';
+import Login from './LoginPage';
 
 function App() {
   const Root = () => {
@@ -22,7 +23,7 @@ function App() {
     createRoutesFromElements(
       <Route path='/' element={<Root />}>
         <Route index element={<Signup />} />
-        <Route path='/login' element={<div>Login</div>} />
+        <Route path='/login' element={<Login />} />
         <Route path='*' element={<Navigate to='/' />} />
       </Route>
     )

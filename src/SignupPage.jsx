@@ -1,5 +1,5 @@
 import React from 'react';
-import FormHeader from './FormHeader';
+import FormHeader from './component/FormHeader';
 
 import {
   Center,
@@ -13,8 +13,8 @@ import {
   Text,
   Link,
 } from '@chakra-ui/react';
-import SignupImage from '../assets/signup.png';
-import { PasswordField } from './PasswordField';
+import SignupImage from './assets/signup.png';
+import { PasswordField } from './component/PasswordField';
 
 const Signup = () => {
   return (

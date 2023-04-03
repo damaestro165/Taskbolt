@@ -42,7 +42,7 @@ export const PasswordField = forwardRef((props, ref) => {
           <IconButton
             variant='link'
             aria-label={isOpen ? 'Mask password' : 'Reveal password'}
-            icon={isOpen ? <HiEyeOff /> : <HiEye />}
+            icon={isOpen ? <HiEye /> : <HiEyeOff />}
             onClick={onClickReveal}
             color='#5720DD'
           />
