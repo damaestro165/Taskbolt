@@ -11,6 +11,7 @@ import {
 import Signup from './SignupPage';
 import Login from './LoginPage';
 import ResetPassword from './ResetPassword';
+import OtpPage from './OtpPage';
 
 function App() {
   const Root = () => {
@@ -26,6 +27,7 @@ function App() {
         <Route index element={<Signup />} />
         <Route path='/login' element={<Login />} />
         <Route path='/reset-password' element={<ResetPassword />} />
+        <Route path='/otp' element={<OtpPage />} />
         <Route path='*' element={<Navigate to='/' />} />
       </Route>
     )
