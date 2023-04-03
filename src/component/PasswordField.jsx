@@ -11,7 +11,7 @@ import {
 import { forwardRef, useRef } from 'react';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
 
-export const PasswordField = forwardRef((props, ref) => {
+export const PasswordField = forwardRef(({ label }, ref) => {
   const { isOpen, onToggle } = useDisclosure();
   const inputRef = useRef(null);
   const mergeRef = useMergeRefs(inputRef, ref);
@@ -34,10 +34,9 @@ export const PasswordField = forwardRef((props, ref) => {
           autoComplete='current-password'
           height='56px'
           required
-          {...props}
           placeholder='  '
         />
-        <FormLabel className='text-gray-500'>Password</FormLabel>
+        <FormLabel className='text-gray-500'>{label || 'Password'}</FormLabel>
         <InputRightElement>
           <IconButton
             variant='link'

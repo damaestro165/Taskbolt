@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 import Signup from './SignupPage';
 import Login from './LoginPage';
+import ResetPassword from './ResetPassword';
 
 function App() {
   const Root = () => {
@@ -24,6 +25,7 @@ function App() {
       <Route path='/' element={<Root />}>
         <Route index element={<Signup />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/reset-password' element={<ResetPassword />} />
         <Route path='*' element={<Navigate to='/' />} />
       </Route>
     )
