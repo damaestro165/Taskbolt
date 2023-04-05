@@ -6,7 +6,7 @@ import './index.css';
 import '@fontsource/poppins';
 
 const activeLabelStyles = {
-  transform: 'scale(0.85) translateY(-24px)',
+  transform: 'scale(0.85) translateY(-29px)',
 };
 export const theme = extendTheme({
   fonts: {
@@ -28,7 +28,7 @@ export const theme = extendTheme({
                 ...activeLabelStyles,
               },
             label: {
-              top: 0,
+              top: 2,
               left: 0,
               zIndex: 2,
               position: 'absolute',

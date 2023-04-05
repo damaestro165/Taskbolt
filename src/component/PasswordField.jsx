@@ -37,13 +37,15 @@ export const PasswordField = forwardRef(({ label }, ref) => {
           placeholder='  '
         />
         <FormLabel className='text-gray-500'>{label || 'Password'}</FormLabel>
-        <InputRightElement>
+        <InputRightElement height='100%'>
           <IconButton
             variant='link'
             aria-label={isOpen ? 'Mask password' : 'Reveal password'}
             icon={isOpen ? <HiEye /> : <HiEyeOff />}
             onClick={onClickReveal}
+            fontSize='20px'
             color='#5720DD'
+            pr={5}
           />
         </InputRightElement>
       </InputGroup>

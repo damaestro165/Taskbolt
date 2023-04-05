@@ -13,16 +13,16 @@ import {
   Box,
   HStack,
 } from '@chakra-ui/react';
-import SignupImage from './assets/signup.png';
+import AuthImage from './assets/otpimage.png';
 const OtpPage = () => {
   return (
     <div className='flex flex-col md:flex-row h-screen relative w-full'>
       <FormHeader />
       <div className='bg-[#5720DD] md:h-screen h-1/3 x md:w-2/6 w-full'>
-        <Center className='md:h-full md:ml-[6rem] pt-5 overflow-x-hidden mt-20 md:mt-0'>
+        <Center className='md:h-full md:ml-[6rem] pt-5 overflow-x-hidden mt-20 md:mt-0 xl:w-[50rem]  xl:ml-[8rem]'>
           <Image
-            src={SignupImage}
-            className=' w-[20rem] md:w-[55rem] md:h-[24rem] xl:h-[31rem] object-cover rounded-md'
+            src={AuthImage}
+            className=' w-[20rem] md:w-[55rem] xl:w-[55rem] md:h-[24rem] xl:h-[31rem] object-cover rounded-md  '
           />
         </Center>
       </div>
@@ -49,7 +49,12 @@ const OtpPage = () => {
               w='100%'
               className='flex justify-center items-center text-[#5720DD] '
             >
-              <PinInput size='lg' focusBorderColor='#5720DD' otp>
+              <PinInput
+                size='lg'
+                focusBorderColor='#5720DD'
+                placeholder=' '
+                otp
+              >
                 <PinInputField />
                 <PinInputField />
                 <PinInputField />

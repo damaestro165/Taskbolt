@@ -6,7 +6,7 @@ import { IoMdClose } from 'react-icons/io';
 const FormHeader = () => {
   return (
     <Box className='absolute w-screen flex p-6 md:p-8  items-center flex-row-reverse md:flex-row justify-between md:justify-normal'>
-      <Text className='text-white w-2/6 text-xl md:text-2xl font-bold'>
+      <Text className='text-white w-2/6 text-xl md:text-2xl font-bold xl:ml-5'>
         TASKBOLT
       </Text>
       <Box className='md:flex justify-between w-4/6 px-3  hidden'>

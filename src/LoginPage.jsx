@@ -14,7 +14,7 @@ import {
   Link,
   Box,
 } from '@chakra-ui/react';
-import SignupImage from './assets/signup.png';
+import AuthImage from './assets/login.png';
 import { PasswordField } from './component/PasswordField';
 
 const Login = () => {
@@ -22,10 +22,10 @@ const Login = () => {
     <div className='flex flex-col md:flex-row h-screen relative w-full'>
       <FormHeader />
       <div className='bg-[#5720DD] md:h-screen h-1/3 x md:w-2/6 w-full'>
-        <Center className='md:h-full md:ml-[6rem] pt-5 overflow-x-hidden mt-20 md:mt-0'>
+        <Center className='md:h-full md:ml-[6rem] pt-5 overflow-x-hidden mt-20 md:mt-0 xl:w-[50rem]  xl:ml-[8rem]'>
           <Image
-            src={SignupImage}
-            className=' w-[20rem] md:w-[55rem] md:h-[24rem] xl:h-[31rem] object-cover rounded-md'
+            src={AuthImage}
+            className=' w-[20rem] md:w-[55rem] xl:w-[55rem] md:h-[24rem] xl:h-[31rem] object-cover rounded-md  '
           />
         </Center>
       </div>
@@ -43,7 +43,7 @@ const Login = () => {
             Login
           </Text>
           <VStack as='form' spacing={8} w='100%' p={{ base: 5, sm: 5 }}>
-            <VStack spacing='1rem' w='100%'>
+            <VStack spacing='2rem' w='100%'>
               <FormControl variant='floating' id='last-name'>
                 <Input
                   placeholder=' '
@@ -53,7 +53,7 @@ const Login = () => {
                   px={2.5}
                   pb={2.5}
                 />
-                <FormLabel className='text-gray-500'>Email Address</FormLabel>
+                <FormLabel className='text-gray-500 '>Email Address</FormLabel>
               </FormControl>
               <PasswordField />
             </VStack>
