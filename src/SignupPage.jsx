@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import FormHeader from './component/FormHeader';
-
+import axios from 'axios';
 import {
   Center,
   FormControl,
@@ -12,19 +12,55 @@ import {
   Button,
   Text,
   Link,
+  createStandaloneToast,
 } from '@chakra-ui/react';
 import SignupImage from './assets/signup.png';
 import { PasswordField } from './component/PasswordField';
 
 const Signup = () => {
+  const { ToastContainer, toast } = createStandaloneToast();
+  const passWordref = useRef('');
+  const emailRef = useRef('');
+  const firstNameRef = useRef('');
+  const lastNameRef = useRef('');
+
+  const handleSignup = (e) => {
+    e.preventDefault();
+    const email = emailRef.current.value;
+    const password = passWordref.current.value;
+    const firstName = firstNameRef.current.value;
+    const lastName = lastNameRef.current.value;
+    console.log(lastName);
+
+    axios
+      .post(
+        'https://74fe-105-112-190-157.ngrok.io/api/v1/users/register',
+        {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          password: password,
+        },
+        {
+          headers: {},
+        }
+      )
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   return (
     <div className='flex flex-col md:flex-row h-screen relative w-full'>
       <FormHeader />
       <div className='bg-[#5720DD] md:h-screen h-1/3 x md:w-2/6 w-full'>
-        <Center className='md:h-full md:ml-[6rem] pt-5 overflow-x-hidden mt-20 md:mt-0'>
+        <Center className='md:h-full md:ml-[6rem] pt-5 overflow-x-hidden mt-20 md:mt-0 xl:w-[50rem]  xl:ml-[8rem]'>
           <Image
             src={SignupImage}
-            className=' w-[20rem] md:w-[55rem] md:h-[24rem] xl:h-[31rem] object-cover rounded-md'
+            className=' w-[20rem] md:w-[55rem] xl:w-[55rem] md:h-[24rem] xl:h-[31rem] object-cover rounded-md  '
           />
         </Center>
       </div>
@@ -41,7 +77,13 @@ const Signup = () => {
           <Text className=' self-start px-10 text-3xl font-semibold'>
             Register Account
           </Text>
-          <VStack as='form' spacing={8} w='100%' p={{ base: 5, sm: 10 }}>
+          <VStack
+            as='form'
+            spacing={8}
+            w='100%'
+            p={{ base: 5, sm: 10 }}
+            onSubmit={handleSignup}
+          >
             <VStack spacing='2rem' w='100%'>
               <Stack
                 w='100%'
@@ -49,11 +91,22 @@ const Signup = () => {
                 direction={{ base: 'column', md: 'row' }}
               >
                 <FormControl variant='floating' id='first-name'>
-                  <Input placeholder=' ' height='56px' />
+                  <Input
+                    placeholder=' '
+                    type='text'
+                    height='56px'
+                    ref={firstNameRef}
+                    required
+                  />
                   <FormLabel className='text-gray-500 '>First name</FormLabel>
                 </FormControl>
                 <FormControl variant='floating' id='last-name'>
-                  <Input placeholder=' ' height='56px' />
+                  <Input
+                    placeholder=' '
+                    height='56px'
+                    type='text'
+                    ref={lastNameRef}
+                  />
                   <FormLabel className='text-gray-500'>Last name</FormLabel>
                 </FormControl>
               </Stack>
@@ -62,13 +115,15 @@ const Signup = () => {
                   placeholder=' '
                   type='email'
                   height='56px'
+                  ref={emailRef}
                   pt={4}
                   px={2.5}
                   pb={2.5}
+                  required
                 />
                 <FormLabel className='text-gray-500'>Email Address</FormLabel>
               </FormControl>
-              <PasswordField />
+              <PasswordField ref={passWordref} />
             </VStack>
             <VStack w='100%'>
               <Button
@@ -77,6 +132,8 @@ const Signup = () => {
                 rounded='md'
                 w={{ base: '100%' }}
                 height='56px'
+                onSubmit={handleSignup}
+                type='submit'
               >
                 Register Account
               </Button>
