@@ -14,6 +14,7 @@ import {
   FormControl,
   Input,
   FormLabel,
+  createStandaloneToast,
 } from '@chakra-ui/react';
 import AuthImage from './assets/forgetpass.png';
 
@@ -21,17 +22,16 @@ const ForgetPass = () => {
   const emailRef = useRef('');
   const { ToastContainer, toast } = createStandaloneToast();
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const email = emailRef.current.value;
+    console.log(emailRef.current.value);
 
     axios
       .post(
-        'https://60d0-105-112-124-76.eu.ngrok.io/api/v1/users/register',
+        'https://60d0-105-112-124-76.eu.ngrok.io/api/v1/users/forgotpassword',
         {
-          firstname: firstName,
-          lastname: lastName,
           email: email,
-          password: password,
         },
         {
           headers: {
@@ -40,15 +40,26 @@ const ForgetPass = () => {
         }
       )
       .then(function (response) {
-        localStorage.setItem('Id', JSON.stringify(response.data.id));
-        navigate('/otp');
+        // localStorage.setItem('Id', JSON.stringify(response.data.id));
+        // navigate('/otp');
+        if (response.data.msg === 'New Password sent to your email address!') {
+          toast({
+            title: 'Check Your email',
+            description: 'New Password sent to your email address!',
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+            position: 'bottom',
+          });
+        }
       })
       .catch(function (error) {
         console.log(error);
-        if (error.response.data.detail[0].msg === 'email already exists!') {
+
+        if (error.response?.data.detail[0].msg === 'email does not exist!') {
           toast({
-            title: 'Email Already Exists',
-            description: 'Login instead',
+            title: 'Email does not exist!',
+            description: 'input the correct email address',
             status: 'error',
             duration: 9000,
             isClosable: true,
@@ -56,13 +67,12 @@ const ForgetPass = () => {
           });
         }
         if (
-          error.response.data.detail[0].msg ===
-          'Password not secure! Must contain minimum of 6 characters, an uppercase, a lowercase, a number, and a symbol'
+          error.response?.data.detail[0].msg ===
+          'value is not a valid email address'
         ) {
           toast({
-            title: 'Weak Password',
-            description:
-              'Password not secure! Must contain minimum of 6 characters, an uppercase, a lowercase, a number, and a symbol',
+            title: 'Not a valid email address',
+            description: 'input the correct email address',
             status: 'error',
             duration: 9000,
             isClosable: true,
@@ -99,7 +109,13 @@ const ForgetPass = () => {
               password link
             </Text>
           </Box>
-          <VStack as='form' spacing={8} w='100%' p={{ base: 5, sm: 5 }}>
+          <VStack
+            as='form'
+            spacing={8}
+            w='100%'
+            p={{ base: 5, sm: 5 }}
+            onSubmit={handleSubmit}
+          >
             <HStack
               spacing='2rem'
               w='100%'
@@ -127,18 +143,19 @@ const ForgetPass = () => {
                 rounded='md'
                 w={{ base: '100%' }}
                 height='56px'
+                type='submit'
                 onSubmit={handleSubmit}
               >
                 Send Reset Link
               </Button>
             </VStack>
+            <Box className='flex'>
+              <Text>Didn't get any link? </Text>
+              <Link color='#5720DD' onClick={handleSubmit}>
+                <Text as='u'>Resend Link</Text>
+              </Link>
+            </Box>
           </VStack>
-          <Box className='flex'>
-            <Text>Didn't get any link? </Text>
-            <Link color='#5720DD'>
-              <Text as='u'>Resend Link</Text>
-            </Link>
-          </Box>
         </Center>
       </div>
     </div>
