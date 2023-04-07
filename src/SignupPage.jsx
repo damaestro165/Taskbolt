@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import FormHeader from './component/FormHeader';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import {
   Center,
   FormControl,
@@ -13,6 +14,7 @@ import {
   Text,
   Link,
   createStandaloneToast,
+  Box,
 } from '@chakra-ui/react';
 import SignupImage from './assets/signup.png';
 import { PasswordField } from './component/PasswordField';
@@ -23,6 +25,7 @@ const Signup = () => {
   const emailRef = useRef('');
   const firstNameRef = useRef('');
   const lastNameRef = useRef('');
+  const navigate = useNavigate();
 
   const handleSignup = (e) => {
     e.preventDefault();
@@ -30,26 +33,52 @@ const Signup = () => {
     const password = passWordref.current.value;
     const firstName = firstNameRef.current.value;
     const lastName = lastNameRef.current.value;
-    console.log(lastName);
 
     axios
       .post(
-        'https://74fe-105-112-190-157.ngrok.io/api/v1/users/register',
+        'https://60d0-105-112-124-76.eu.ngrok.io/api/v1/users/register',
         {
-          firstName: firstName,
-          lastName: lastName,
+          firstname: firstName,
+          lastname: lastName,
           email: email,
           password: password,
         },
         {
-          headers: {},
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+          },
         }
       )
       .then(function (response) {
-        console.log(response);
+        localStorage.setItem('User', JSON.stringify(response.data.id));
+        navigate('/otp');
       })
       .catch(function (error) {
         console.log(error);
+        if (error.response.data.detail[0].msg === 'email already exists!') {
+          toast({
+            title: 'Email Already Exists',
+            description: 'Login instead',
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+            position: 'bottom',
+          });
+        }
+        if (
+          error.response.data.detail[0].msg ===
+          'Password not secure! Must contain minimum of 6 characters, an uppercase, a lowercase, a number, and a symbol'
+        ) {
+          toast({
+            title: 'Weak Password',
+            description:
+              'Password not secure! Must contain minimum of 6 characters, an uppercase, a lowercase, a number, and a symbol',
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+            position: 'bottom',
+          });
+        }
       });
   };
 
@@ -106,6 +135,7 @@ const Signup = () => {
                     height='56px'
                     type='text'
                     ref={lastNameRef}
+                    required
                   />
                   <FormLabel className='text-gray-500'>Last name</FormLabel>
                 </FormControl>
@@ -138,6 +168,13 @@ const Signup = () => {
                 Register Account
               </Button>
             </VStack>
+            <Box className='flex gap-1'>
+              <Text>Already have an account? </Text>
+
+              <Link color='#5720DD'>
+                <Text as='u'> LogIn</Text>
+              </Link>
+            </Box>
           </VStack>
         </Center>
       </div>

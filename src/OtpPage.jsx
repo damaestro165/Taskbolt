@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import FormHeader from './component/FormHeader';
 
 import {
@@ -14,6 +14,7 @@ import {
   HStack,
 } from '@chakra-ui/react';
 import AuthImage from './assets/otpimage.png';
+
 const OtpPage = () => {
   return (
     <div className='flex flex-col md:flex-row h-screen relative w-full'>
