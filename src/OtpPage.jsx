@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import FormHeader from './component/FormHeader';
 
 import {
@@ -12,10 +12,102 @@ import {
   Link,
   Box,
   HStack,
+  createStandaloneToast,
 } from '@chakra-ui/react';
 import AuthImage from './assets/otpimage.png';
+import axios from 'axios';
 
 const OtpPage = () => {
+  const [otp, setOtp] = useState('');
+  const Id = JSON.parse(localStorage.getItem('User'));
+
+  const { ToastContainer, toast } = createStandaloneToast();
+  useEffect(() => {
+    axios
+      .post(
+        'https://60d0-105-112-124-76.eu.ngrok.io/api/v1/users/registerotp',
+        {
+          id: Id,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+          },
+        }
+      )
+      .then(function (response) {
+        console.log(response);
+        toast({
+          title: 'One-Time Password sent successfully!',
+          description: 'Check your email',
+          status: 'success',
+          duration: 9000,
+          isClosable: true,
+          position: 'bottom',
+        });
+
+        // localStorage.setItem('User', JSON.stringify(response.data.id));
+        // navigate('/otp');
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
+  const handleOtp = (e) => {
+    e.preventDefault();
+    axios
+      .post(
+        'https://60d0-105-112-124-76.eu.ngrok.io/api/v1/users/verifyotp',
+        {
+          id: Id,
+          otp: otp,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+          },
+        }
+      )
+      .then(function (response) {
+        console.log(response);
+
+        toast({
+          title: 'One-Time Password sent successfully!',
+          description: 'Check your email',
+          status: 'success',
+          duration: 1000,
+          isClosable: true,
+          position: 'bottom',
+        });
+
+        // localStorage.setItem('User', JSON.stringify(response.data.id));
+        // navigate('/otp');
+      })
+      .catch(function (error) {
+        if (error.response.data.msg === 'Wrong OTP!') {
+          toast({
+            title: 'Wrong OTP!',
+            description: 'Input the correct Otp and retry',
+            status: 'error',
+            duration: 5000,
+            isClosable: true,
+            position: 'bottom',
+          });
+        }
+        if (error.response.data.msg === 'OTP expired!') {
+          toast({
+            title: 'OTP expired!',
+            description: 'Retry',
+            status: 'error',
+            duration: 5000,
+            isClosable: true,
+            position: 'bottom',
+          });
+        }
+      });
+  };
+
   return (
     <div className='flex flex-col md:flex-row h-screen relative w-full'>
       <FormHeader />
@@ -54,6 +146,8 @@ const OtpPage = () => {
                 size='lg'
                 focusBorderColor='#5720DD'
                 placeholder=' '
+                onChange={(value) => setOtp(value)}
+                type='number'
                 otp
               >
                 <PinInputField />
@@ -71,6 +165,7 @@ const OtpPage = () => {
                 rounded='md'
                 w={{ base: '100%' }}
                 height='56px'
+                onClick={handleOtp}
               >
                 Verify Account
               </Button>

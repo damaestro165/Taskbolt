@@ -171,7 +171,7 @@ const Signup = () => {
             <Box className='flex gap-1'>
               <Text>Already have an account? </Text>
 
-              <Link color='#5720DD'>
+              <Link color='#5720DD' href='/login'>
                 <Text as='u'> LogIn</Text>
               </Link>
             </Box>

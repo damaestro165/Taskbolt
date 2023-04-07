@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import FormHeader from './component/FormHeader';
-
+import axios from 'axios';
 import {
   Center,
   FormControl,
@@ -13,11 +13,65 @@ import {
   Text,
   Link,
   Box,
+  createStandaloneToast,
 } from '@chakra-ui/react';
 import AuthImage from './assets/login.png';
 import { PasswordField } from './component/PasswordField';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const passWordref = useRef('');
+  const emailRef = useRef('');
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = emailRef.current.value;
+    const password = passWordref.current.value;
+
+    axios
+      .post(
+        'https://60d0-105-112-124-76.eu.ngrok.io/api/v1/users/login',
+        {
+          email: email,
+          password: password,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+          },
+        }
+      )
+      .then(function (response) {
+        // localStorage.setItem('User', JSON.stringify(response.data.id));
+        // navigate('/otp');
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        if (error.response.data.msg === 'User not verified!') {
+          localStorage.setItem(
+            'User',
+            JSON.stringify(error.response.data.data.id)
+          );
+          navigate('/otp');
+        }
+        // if (
+        //   error.response.data.detail[0].msg ===
+        //   'Password not secure! Must contain minimum of 6 characters, an uppercase, a lowercase, a number, and a symbol'
+        // ) {
+        //   toast({
+        //     title: 'Weak Password',
+        //     description:
+        //       'Password not secure! Must contain minimum of 6 characters, an uppercase, a lowercase, a number, and a symbol',
+        //     status: 'error',
+        //     duration: 9000,
+        //     isClosable: true,
+        //     position: 'bottom',
+        //   });
+        // }
+      });
+  };
+
   return (
     <div className='flex flex-col md:flex-row h-screen relative w-full'>
       <FormHeader />
@@ -52,12 +106,19 @@ const Login = () => {
                   pt={4}
                   px={2.5}
                   pb={2.5}
+                  ref={emailRef}
+                  required
                 />
                 <FormLabel className='text-gray-500 '>Email Address</FormLabel>
               </FormControl>
-              <PasswordField />
+              <PasswordField ref={passWordref} />
             </VStack>
-            <Link color='#5720DD' alignSelf='flex-start' mr={5}>
+            <Link
+              color='#5720DD'
+              alignSelf='flex-start'
+              mr={5}
+              href='/forgetpass'
+            >
               <Text as='u'> Forget Password?</Text>
             </Link>
             <VStack w='100%'>
@@ -67,6 +128,7 @@ const Login = () => {
                 rounded='md'
                 w={{ base: '100%' }}
                 height='56px'
+                onClick={handleLogin}
               >
                 Log In
               </Button>
@@ -74,7 +136,7 @@ const Login = () => {
           </VStack>
           <Box className='flex'>
             <Text>Don't have an account yet?</Text>
-            <Link color='#5720DD'>
+            <Link color='#5720DD' href='/signup'>
               <Text as='u'> Register</Text>
             </Link>
           </Box>
