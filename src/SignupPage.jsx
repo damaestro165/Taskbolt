@@ -50,7 +50,7 @@ const Signup = () => {
         }
       )
       .then(function (response) {
-        localStorage.setItem('User', JSON.stringify(response.data.id));
+        localStorage.setItem('Id', JSON.stringify(response.data.id));
         navigate('/otp');
       })
       .catch(function (error) {

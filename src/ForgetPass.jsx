@@ -21,7 +21,56 @@ const ForgetPass = () => {
   const emailRef = useRef('');
   const { ToastContainer, toast } = createStandaloneToast();
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    const email = emailRef.current.value;
+
+    axios
+      .post(
+        'https://60d0-105-112-124-76.eu.ngrok.io/api/v1/users/register',
+        {
+          firstname: firstName,
+          lastname: lastName,
+          email: email,
+          password: password,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+          },
+        }
+      )
+      .then(function (response) {
+        localStorage.setItem('Id', JSON.stringify(response.data.id));
+        navigate('/otp');
+      })
+      .catch(function (error) {
+        console.log(error);
+        if (error.response.data.detail[0].msg === 'email already exists!') {
+          toast({
+            title: 'Email Already Exists',
+            description: 'Login instead',
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+            position: 'bottom',
+          });
+        }
+        if (
+          error.response.data.detail[0].msg ===
+          'Password not secure! Must contain minimum of 6 characters, an uppercase, a lowercase, a number, and a symbol'
+        ) {
+          toast({
+            title: 'Weak Password',
+            description:
+              'Password not secure! Must contain minimum of 6 characters, an uppercase, a lowercase, a number, and a symbol',
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+            position: 'bottom',
+          });
+        }
+      });
+  };
   return (
     <div className='flex flex-col md:flex-row h-screen relative w-full'>
       <FormHeader />

@@ -19,9 +19,10 @@ import axios from 'axios';
 
 const OtpPage = () => {
   const [otp, setOtp] = useState('');
-  const Id = JSON.parse(localStorage.getItem('User'));
+  const Id = JSON.parse(localStorage.getItem('Id'));
 
   const { ToastContainer, toast } = createStandaloneToast();
+
   useEffect(() => {
     axios
       .post(
@@ -52,7 +53,7 @@ const OtpPage = () => {
       .catch(function (error) {
         console.log(error);
       });
-  }, []);
+  }, [Id]);
 
   const handleOtp = (e) => {
     e.preventDefault();
@@ -70,11 +71,9 @@ const OtpPage = () => {
         }
       )
       .then(function (response) {
-        console.log(response);
-
         toast({
-          title: 'One-Time Password sent successfully!',
-          description: 'Check your email',
+          title: 'User verification successfully!',
+          description: `welcome ${response.data.data.firstname} `,
           status: 'success',
           duration: 1000,
           isClosable: true,
@@ -150,6 +149,7 @@ const OtpPage = () => {
                 type='number'
                 otp
               >
+                <PinInputField />
                 <PinInputField />
                 <PinInputField />
                 <PinInputField />

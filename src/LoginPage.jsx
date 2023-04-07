@@ -23,6 +23,7 @@ const Login = () => {
   const passWordref = useRef('');
   const emailRef = useRef('');
   const navigate = useNavigate();
+  const { ToastContainer, toast } = createStandaloneToast();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -43,15 +44,23 @@ const Login = () => {
         }
       )
       .then(function (response) {
-        // localStorage.setItem('User', JSON.stringify(response.data.id));
-        // navigate('/otp');
-        console.log(JSON.stringify(response.data));
+        localStorage.setItem('User', JSON.stringify(response?.data?.data));
+        if (response.data.msg === 'Success!') {
+          toast({
+            title: 'Success!',
+            description: `welcome ${response?.data?.data?.firstname} `,
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+            position: 'bottom',
+          });
+        }
       })
       .catch(function (error) {
-        if (error.response.data.msg === 'User not verified!') {
+        if (error?.response?.data?.msg === 'User not verified!') {
           localStorage.setItem(
             'User',
-            JSON.stringify(error.response.data.data.id)
+            JSON.stringify(error?.response?.data?.data?.id)
           );
           navigate('/otp');
         }
