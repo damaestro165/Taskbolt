@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import FormHeader from './component/FormHeader';
+import axios from 'axios';
 
 import {
   Center,
   Image,
   VStack,
-  PinInput,
-  PinInputField,
   Button,
   Text,
   Link,
@@ -19,6 +18,10 @@ import {
 import AuthImage from './assets/forgetpass.png';
 
 const ForgetPass = () => {
+  const emailRef = useRef('');
+  const { ToastContainer, toast } = createStandaloneToast();
+
+  const handleSubmit = () => {};
   return (
     <div className='flex flex-col md:flex-row h-screen relative w-full'>
       <FormHeader />
@@ -53,7 +56,6 @@ const ForgetPass = () => {
               w='100%'
               className='flex justify-center items-center text-[#5720DD] '
             >
-              {' '}
               <FormControl variant='floating' id='last-name'>
                 <Input
                   placeholder=' '
@@ -62,6 +64,8 @@ const ForgetPass = () => {
                   pt={4}
                   px={2.5}
                   pb={2.5}
+                  ref={emailRef}
+                  required
                 />
                 <FormLabel className='text-gray-500'>Email Address</FormLabel>
               </FormControl>
@@ -74,6 +78,7 @@ const ForgetPass = () => {
                 rounded='md'
                 w={{ base: '100%' }}
                 height='56px'
+                onSubmit={handleSubmit}
               >
                 Send Reset Link
               </Button>
