@@ -29,7 +29,7 @@ const ForgetPass = () => {
 
     axios
       .post(
-        'https://60d0-105-112-124-76.eu.ngrok.io/api/v1/users/forgotpassword',
+        'https://a579-105-112-124-76.ngrok-free.app/api/v1/users/forgotpassword',
         {
           email: email,
         },
@@ -40,8 +40,6 @@ const ForgetPass = () => {
         }
       )
       .then(function (response) {
-        // localStorage.setItem('Id', JSON.stringify(response.data.id));
-        // navigate('/otp');
         if (response.data.msg === 'New Password sent to your email address!') {
           toast({
             title: 'Check Your email',
@@ -81,6 +79,7 @@ const ForgetPass = () => {
         }
       });
   };
+
   return (
     <div className='flex flex-col md:flex-row h-screen relative w-full'>
       <FormHeader />
