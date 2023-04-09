@@ -109,17 +109,23 @@ const ResetPassword = () => {
         </Center>
       </div>
       <div className='md:w-4/6 bg-white h-2/3 md:h-screen w-full '>
-        <Center className='h-full -mt-8 flex-col md:mt-0 lg:mt-4 xl:mt-0 lg:px-[5rem] xl:px-[8rem]  xl:gap-5 w-full'>
+        <Center className='h-full  -mt-10 flex-col md:mt-0 lg:mt-4 xl:mt-0 lg:px-[5rem] xl:px-[8rem]  xl:gap-5 w-full'>
           <Link
             color='#5720DD'
             alignSelf='flex-end'
             mr={5}
+            my={5}
+            mx={5}
             visibility={{ base: 'vissible', sm: 'hidden' }}
           >
-            <Text as='u'> Need Any Help?</Text>
+            <Text as='u' className='text-xs'>
+              Need Any Help?
+            </Text>
           </Link>
           <Box className='flex items-center justify-center flex-col mt-5 md:mt-0'>
-            <Text className=' text-3xl font-semibold'>Reset Password</Text>
+            <Text className=' text-xl md:text-3xl font-semibold'>
+              Reset Password
+            </Text>
             <Text>Set a secure password.</Text>
           </Box>
           <VStack

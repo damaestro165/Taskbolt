@@ -99,16 +99,20 @@ const Login = () => {
         </Center>
       </div>
       <div className='md:w-4/6 bg-white h-2/3 md:h-screen w-full '>
-        <Center className='h-full -mt-8 flex-col md:mt-0 lg:mt-4 xl:mt-0 lg:px-[5rem] xl:px-[8rem]  xl:gap-5 w-full'>
+        <Center className='h-full -mt-10  flex-col md:mt-0 lg:mt-4 xl:mt-0 lg:px-[5rem] xl:px-[8rem]  xl:gap-5 w-full'>
           <Link
             color='#5720DD'
             alignSelf='flex-end'
             mr={5}
+            my={5}
+            mx={5}
             visibility={{ base: 'vissible', sm: 'hidden' }}
           >
-            <Text as='u'> Need Any Help?</Text>
+            <Text as='u' className='text-xs'>
+              Need Any Help?
+            </Text>
           </Link>
-          <Text className=' self-start px-10 text-3xl font-semibold'>
+          <Text className=' self-start mb-2 md:mb-0 px-10 text-xl md:text-3xl font-semibold'>
             Login
           </Text>
           <VStack as='form' spacing={8} w='100%' p={{ base: 5, sm: 5 }}>
@@ -141,6 +145,7 @@ const Login = () => {
                 bg='#c8c8c8'
                 color='white'
                 rounded='md'
+                s
                 w={{ base: '100%' }}
                 height='56px'
                 onClick={handleLogin}

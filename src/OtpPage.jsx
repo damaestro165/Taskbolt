@@ -26,7 +26,7 @@ const OtpPage = () => {
   useEffect(() => {
     axios
       .post(
-        'https://60d0-105-112-124-76.eu.ngrok.io/api/v1/users/registerotp',
+        'https://taskbolt-user-staging.up.railway.app/api/v1/users/registerotp',
         {
           id: Id,
         },
@@ -110,30 +110,34 @@ const OtpPage = () => {
         </Center>
       </div>
       <div className='md:w-4/6 bg-white h-2/3 md:h-screen w-full '>
-        <Center className='h-full -mt-8 flex-col md:mt-0 lg:mt-4 xl:mt-0 lg:px-[5rem] xl:px-[8rem]  xl:gap-5 w-full'>
+        <Center className='h-full flex-col  -mt-10 md:mt-0 lg:mt-4 xl:mt-0 lg:px-[5rem] xl:px-[8rem]  xl:gap-5 w-full'>
           <Link
             color='#5720DD'
             alignSelf='flex-end'
             mr={5}
+            my={5}
+            mx={5}
             visibility={{ base: 'vissible', sm: 'hidden' }}
           >
-            <Text as='u'> Need Any Help?</Text>
+            <Text as='u' className='text-xs'>
+              Need Any Help?
+            </Text>
           </Link>
           <Box className='flex items-center justify-center flex-col mt-5 md:mt-0 gap-5'>
-            <Text className=' text-3xl font-semibold'>Enter OTP</Text>
-            <Text className=' text-center px-16'>
+            <Text className='text-xl md:text-3xl font-semibold'>Enter OTP</Text>
+            <Text className=' text-center px-5 md:px-16'>
               Enter the one time code that was sent to your email address for
               account confirmation.
             </Text>
           </Box>
           <VStack as='form' spacing={8} w='100%' p={{ base: 5, sm: 5 }}>
             <HStack
-              spacing='2rem'
+              spacing={{ base: '.5rem', md: '2rem' }}
               w='100%'
               className='flex justify-center items-center text-[#5720DD] '
             >
               <PinInput
-                size='lg'
+                size={{ base: 'md', md: 'lg' }}
                 focusBorderColor='#5720DD'
                 placeholder=' '
                 onChange={(value) => setOtp(value)}
