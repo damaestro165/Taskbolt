@@ -37,7 +37,6 @@ const OtpPage = () => {
         }
       )
       .then(function (response) {
-        console.log(response);
         toast({
           title: 'One-Time Password sent successfully!',
           description: 'Check your email',
@@ -46,20 +45,15 @@ const OtpPage = () => {
           isClosable: true,
           position: 'bottom',
         });
-
-        // localStorage.setItem('User', JSON.stringify(response.data.id));
-        // navigate('/otp');
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+      .catch(function (error) {});
   }, [Id]);
 
   const handleOtp = (e) => {
     e.preventDefault();
     axios
       .post(
-        'https://60d0-105-112-124-76.eu.ngrok.io/api/v1/users/verifyotp',
+        'https://taskbolt-user-staging.up.railway.app/api/v1/users/verifyotp',
         {
           id: Id,
           otp: otp,
@@ -79,9 +73,6 @@ const OtpPage = () => {
           isClosable: true,
           position: 'bottom',
         });
-
-        // localStorage.setItem('User', JSON.stringify(response.data.id));
-        // navigate('/otp');
       })
       .catch(function (error) {
         if (error.response.data.msg === 'Wrong OTP!') {

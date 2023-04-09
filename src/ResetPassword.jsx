@@ -45,11 +45,10 @@ const ResetPassword = () => {
         position: 'bottom',
       });
     }
-    console.log(token);
 
     try {
       const response = await axios.post(
-        'https://a579-105-112-124-76.ngrok-free.app/api/v1/users/resetpassword',
+        'https://taskbolt-user-staging.up.railway.app/api/v1/users/resetpassword',
         {
           password: password,
           token: token,
@@ -60,19 +59,19 @@ const ResetPassword = () => {
           },
         }
       );
-      console.log(response);
+
       // localStorage.setItem('Id', JSON.stringify(response.data.id));
-      // navigate('/otp');
-      // if (response.data.msg === 'New Password sent to your email address!') {
-      //   toast({
-      //     title: 'Check Your email',
-      //     description: 'New Password sent to your email address!',
-      //     status: 'success',
-      //     duration: 9000,
-      //     isClosable: true,
-      //     position: 'bottom',
-      //   });
-      // }
+      navigate('/login');
+      if (response.data.msg === 'Password reset successful!') {
+        toast({
+          title: 'Password reset successful!',
+          description: 'Login',
+          status: 'success',
+          duration: 9000,
+          isClosable: true,
+          position: 'bottom',
+        });
+      }
     } catch (error) {
       console.log(error);
       if (error.response?.data.msg === 'Signature has expired') {
@@ -86,19 +85,16 @@ const ResetPassword = () => {
         });
         navigate('/forgetpass');
       }
-      // if (
-      //   error.response?.data.detail[0].msg ===
-      //   'value is not a valid email address'
-      // ) {
-      //   toast({
-      //     title: 'Not a valid email address',
-      //     description: 'input the correct email address',
-      //     status: 'error',
-      //     duration: 9000,
-      //     isClosable: true,
-      //     position: 'bottom',
-      //   });
-      // }
+      if (error.response?.data.msg === 'Token Expired!') {
+        toast({
+          title: 'Token Expired!',
+          description: 'Resend Link',
+          status: 'error',
+          duration: 9000,
+          isClosable: true,
+          position: 'bottom',
+        });
+      }
     }
   };
   return (

@@ -32,7 +32,7 @@ const Login = () => {
 
     axios
       .post(
-        'https://60d0-105-112-124-76.eu.ngrok.io/api/v1/users/login',
+        'https://taskbolt-user-staging.up.railway.app/api/v1/users/login',
         {
           email: email,
           password: password,
@@ -59,25 +59,31 @@ const Login = () => {
       .catch(function (error) {
         if (error?.response?.data?.msg === 'User not verified!') {
           localStorage.setItem(
-            'User',
+            'Id',
             JSON.stringify(error?.response?.data?.data?.id)
           );
           navigate('/otp');
         }
-        // if (
-        //   error.response.data.detail[0].msg ===
-        //   'Password not secure! Must contain minimum of 6 characters, an uppercase, a lowercase, a number, and a symbol'
-        // ) {
-        //   toast({
-        //     title: 'Weak Password',
-        //     description:
-        //       'Password not secure! Must contain minimum of 6 characters, an uppercase, a lowercase, a number, and a symbol',
-        //     status: 'error',
-        //     duration: 9000,
-        //     isClosable: true,
-        //     position: 'bottom',
-        //   });
-        // }
+        if (error.response.data.msg === 'Incorrect Password!') {
+          toast({
+            title: 'Incorrect Password!',
+            description: 'Input the correct password ',
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+            position: 'bottom',
+          });
+        }
+        if (error.response.data.msg === 'Email does not exist!') {
+          toast({
+            title: 'Email does not exist!',
+            description: 'Register Instead ',
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+            position: 'bottom',
+          });
+        }
       });
   };
 

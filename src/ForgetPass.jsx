@@ -29,7 +29,7 @@ const ForgetPass = () => {
 
     axios
       .post(
-        'https://a579-105-112-124-76.ngrok-free.app/api/v1/users/forgotpassword',
+        'https://taskbolt-user-staging.up.railway.app/api/v1/users/forgotpassword',
         {
           email: email,
         },

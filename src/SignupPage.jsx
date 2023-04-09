@@ -36,7 +36,7 @@ const Signup = () => {
 
     axios
       .post(
-        'https://60d0-105-112-124-76.eu.ngrok.io/api/v1/users/register',
+        'https://taskbolt-user-staging.up.railway.app/api/v1/users/register',
         {
           firstname: firstName,
           lastname: lastName,
@@ -99,7 +99,8 @@ const Signup = () => {
             color='#5720DD'
             alignSelf='flex-end'
             mr={5}
-            visibility={{ base: 'vissible', sm: 'hidden' }}
+            mx={5}
+            visibility={{ base: 'visible', sm: 'hidden' }}
           >
             <Text as='u'> Need Any Help?</Text>
           </Link>
