@@ -145,7 +145,6 @@ const Login = () => {
                 bg='#5720DD'
                 color='white'
                 rounded='md'
-                s
                 w={{ base: '100%' }}
                 height='56px'
                 onClick={handleLogin}
