@@ -161,7 +161,7 @@ const Signup = () => {
             </VStack>
             <VStack w='100%'>
               <Button
-                bg='#c8c8c8'
+                bg='#5720DD'
                 color='white'
                 rounded='md'
                 w={{ base: '100%' }}

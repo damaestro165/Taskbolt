@@ -155,7 +155,7 @@ const OtpPage = () => {
             <VStack w='100%'>
               <Text>Resend code in 00 : 59</Text>
               <Button
-                bg='#c8c8c8'
+                bg='#5720DD'
                 color='white'
                 rounded='md'
                 w={{ base: '100%' }}
