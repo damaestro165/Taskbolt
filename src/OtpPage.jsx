@@ -130,7 +130,13 @@ const OtpPage = () => {
               account confirmation.
             </Text>
           </Box>
-          <VStack as='form' spacing={8} w='100%' p={{ base: 5, sm: 5 }}>
+          <VStack
+            as='form'
+            spacing={8}
+            w='100%'
+            p={{ base: 5, sm: 5 }}
+            onSubmit={handleOtp}
+          >
             <HStack
               spacing={{ base: '.5rem', md: '2rem' }}
               w='100%'
@@ -144,11 +150,11 @@ const OtpPage = () => {
                 type='number'
                 otp
               >
-                <PinInputField />
-                <PinInputField />
-                <PinInputField />
-                <PinInputField />
-                <PinInputField />
+                <PinInputField required />
+                <PinInputField required />
+                <PinInputField required />
+                <PinInputField required />
+                <PinInputField required />
               </PinInput>
             </HStack>
 
@@ -160,7 +166,8 @@ const OtpPage = () => {
                 rounded='md'
                 w={{ base: '100%' }}
                 height='56px'
-                onClick={handleOtp}
+                onSubmit={handleOtp}
+                type='submit'
               >
                 Verify Account
               </Button>
