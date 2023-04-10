@@ -117,7 +117,7 @@ const Login = () => {
           </Text>
           <VStack as='form' spacing={8} w='100%' p={{ base: 5, sm: 5 }}>
             <VStack spacing='2rem' w='100%'>
-              <FormControl variant='floating' id='last-name'>
+              <FormControl variant='floating' id='email'>
                 <Input
                   placeholder=' '
                   type='email'

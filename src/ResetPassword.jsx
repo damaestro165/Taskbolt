@@ -102,7 +102,7 @@ const ResetPassword = () => {
       <FormHeader />
       <div className='bg-[#5720DD] md:h-screen h-1/3 x md:w-2/6 w-full'>
         <Center className='md:h-full md:ml-[6rem] pt-5 overflow-x-hidden mt-20 md:mt-0 xl:w-[50rem]  xl:ml-[8rem]'>
-          <Image
+          <Imagey
             src={AuthImage}
             className=' w-[20rem] md:w-[55rem] xl:w-[55rem] md:h-[24rem] xl:h-[31rem] object-cover rounded-md  '
           />

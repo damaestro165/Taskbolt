@@ -126,7 +126,7 @@ const ForgetPass = () => {
               w='100%'
               className='flex justify-center items-center text-[#5720DD] '
             >
-              <FormControl variant='floating' id='last-name'>
+              <FormControl variant='floating' id='email'>
                 <Input
                   placeholder=' '
                   type='email'

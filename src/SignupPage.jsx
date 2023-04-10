@@ -50,11 +50,10 @@ const Signup = () => {
         }
       )
       .then(function (response) {
-        localStorage.setItem('Id', JSON.stringify(response.data.id));
+        localStorage.setItem('Id', JSON.stringify(response.data.data.id));
         navigate('/otp');
       })
       .catch(function (error) {
-        console.log(error);
         if (error.response.data.detail[0].msg === 'email already exists!') {
           toast({
             title: 'Email Already Exists',
@@ -144,7 +143,7 @@ const Signup = () => {
                   <FormLabel className='text-gray-500'>Last name</FormLabel>
                 </FormControl>
               </Stack>
-              <FormControl variant='floating' id='last-name'>
+              <FormControl variant='floating' id='email'>
                 <Input
                   placeholder=' '
                   type='email'
