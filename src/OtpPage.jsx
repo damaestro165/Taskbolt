@@ -17,10 +17,12 @@ import {
 import AuthImage from './assets/otpimage.png';
 import axios from 'axios';
 import CountdownTimer from './component/Countdown';
+import { useNavigate } from 'react-router-dom';
 
 const OtpPage = () => {
   const [otp, setOtp] = useState('');
   const Id = JSON.parse(localStorage.getItem('Id'));
+  const navigate = useNavigate();
 
   const { ToastContainer, toast } = createStandaloneToast();
 
@@ -94,12 +96,13 @@ const OtpPage = () => {
       .then(function (response) {
         toast({
           title: 'User verification successfully!',
-          description: `welcome ${response.data.data.firstname} `,
+          description: `Login `,
           status: 'success',
           duration: 1000,
           isClosable: true,
           position: 'bottom',
         });
+        navigate('/login');
       })
       .catch(function (error) {
         if (error.response.data.msg === 'Wrong OTP!') {
@@ -111,6 +114,17 @@ const OtpPage = () => {
             isClosable: true,
             position: 'bottom',
           });
+        }
+        if (error.response.data.msg === 'User already verified!') {
+          toast({
+            title: 'Login',
+            description: 'Login',
+            status: 'error',
+            duration: 5000,
+            isClosable: true,
+            position: 'bottom',
+          });
+          navigate('/login');
         }
         if (error.response.data.msg === 'OTP expired!') {
           toast({
