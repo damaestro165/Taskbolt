@@ -16,6 +16,7 @@ import {
 } from '@chakra-ui/react';
 import AuthImage from './assets/otpimage.png';
 import axios from 'axios';
+import CountdownTimer from './component/Countdown';
 
 const OtpPage = () => {
   const [otp, setOtp] = useState('');
@@ -48,6 +49,32 @@ const OtpPage = () => {
       })
       .catch(function (error) {});
   }, [Id]);
+
+  const resendOtp = () => {
+    axios
+      .post(
+        'https://taskbolt-user-staging.up.railway.app/api/v1/users/registerotp',
+        {
+          id: Id,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+          },
+        }
+      )
+      .then(function (response) {
+        toast({
+          title: 'One-Time Password sent successfully!',
+          description: 'Check your email',
+          status: 'success',
+          duration: 9000,
+          isClosable: true,
+          position: 'bottom',
+        });
+      })
+      .catch(function (error) {});
+  };
 
   const handleOtp = (e) => {
     e.preventDefault();
@@ -159,7 +186,11 @@ const OtpPage = () => {
             </HStack>
 
             <VStack w='100%'>
-              <Text>Resend code in 00 : 59</Text>
+              <HStack>
+                <Text>Resend code in</Text>
+                <CountdownTimer resendOtp={resendOtp} />
+              </HStack>
+
               <Button
                 bg='#5720DD'
                 color='white'
