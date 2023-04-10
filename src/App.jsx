@@ -13,6 +13,8 @@ import Login from './LoginPage';
 import ResetPassword from './ResetPassword';
 import OtpPage from './OtpPage';
 import ForgetPass from './ForgetPass';
+import ProtectedRoute from './component/ProtectedRoute';
+import { Dashboard } from './Dashboard';
 
 function App() {
   const Root = () => {
@@ -24,13 +26,18 @@ function App() {
   };
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path='/' element={<Root />}>
-        <Route index element={<Signup />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/reset-password' element={<ResetPassword />} />
-        <Route path='/otp' element={<OtpPage />} />
-        <Route path='/forgetpass' element={<ForgetPass />} />
-        <Route path='*' element={<Navigate to='/' />} />
+      <Route>
+        <Route path='/' element={<Root />}>
+          <Route index element={<Signup />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/reset-password' element={<ResetPassword />} />
+          <Route path='/otp' element={<OtpPage />} />
+          <Route path='/forgetpass' element={<ForgetPass />} />
+          <Route path='*' element={<Navigate to='/' />} />
+        </Route>
+        <Route element={<ProtectedRoute />}>
+          <Route path='/dashboard' element={<Dashboard />} />
+        </Route>
       </Route>
     )
   );

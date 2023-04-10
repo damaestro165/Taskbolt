@@ -54,6 +54,7 @@ const Login = () => {
             isClosable: true,
             position: 'bottom',
           });
+          navigate('/dashboard');
         }
       })
       .catch(function (error) {
