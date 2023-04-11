@@ -1,5 +1,10 @@
 import React from 'react';
+import TopBar from './component/TopBar';
 
 export const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return (
+    <>
+      <TopBar />
+    </>
+  );
 };

@@ -117,7 +117,7 @@ const OtpPage = () => {
         }
         if (error.response.data.msg === 'User already verified!') {
           toast({
-            title: 'Login',
+            title: 'User already verified!',
             description: 'Login',
             status: 'error',
             duration: 5000,
