@@ -9,6 +9,11 @@ const activeLabelStyles = {
   transform: 'scale(0.85) translateY(-29px)',
 };
 export const theme = extendTheme({
+  colors: {
+    brand: {
+      100: '#5720DD',
+    },
+  },
   fonts: {
     heading: `'Poppins', sans-serif`,
     body: `'Poppins', sans-serif`,

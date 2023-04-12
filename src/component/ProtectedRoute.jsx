@@ -7,8 +7,6 @@ const ProtectedRoute = () => {
     const { token: userToken } = JSON.parse(userData);
     token = userToken;
   }
-  console.log(token);
-  // const { token } = JSON.parse(localStorage.getItem('User'));
 
   return token !== null ? <Outlet /> : <Navigate to='/login' />;
 };
