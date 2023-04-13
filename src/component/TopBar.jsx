@@ -16,8 +16,8 @@ import Logo from '../assets/logo.svg';
 import { AiOutlinePlus } from 'react-icons/ai';
 import MenuComp from './Menu';
 
-import NotificationIcon from './BellIcon';
-import { CiSearch } from 'react-icons/Ci';
+import NotificationIcon from '../assets/Icons/BellIcon';
+import { CiSearch } from 'react-icons/ci';
 
 import { RiCommandFill } from 'react-icons/ri';
 
@@ -31,7 +31,7 @@ const TopBar = () => {
           bg='white'
           variant='solid'
           color='brand.100'
-          fontSize='xl'
+          fontSize='md'
           py='1.5rem'
         >
           Create Project
