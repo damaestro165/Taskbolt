@@ -8,7 +8,7 @@ export const Dashboard = () => {
   return (
     <>
       <TopBar />
-      <Box className=' flex gap-[0.2rem]' bg='#f5f5f5'>
+      <Box className=' flex gap-[0.15rem]' bg='#f5f5f5'>
         <SideBar />
         <ProjectBoard />
       </Box>
