@@ -1,8 +1,9 @@
+import { Icon } from '@chakra-ui/react';
 import React from 'react';
 
 const ViewIcon = (props) => {
   return (
-    <svg
+    <Icon
       width='25'
       height='24'
       viewBox='0 0 25 24'
@@ -24,7 +25,7 @@ const ViewIcon = (props) => {
         strokeLinecap='round'
         strokeLinejoin='round'
       />
-    </svg>
+    </Icon>
   );
 };
 

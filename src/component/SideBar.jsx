@@ -5,6 +5,7 @@ import {
   Collapse,
   Box,
   Text,
+  Divider,
 } from '@chakra-ui/react';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
@@ -35,11 +36,13 @@ const SideBar = () => {
           </Box>
           <HiOutlineChevronDown fontSize='1.5rem' />
         </NavLink>
+        <Divider />
         <NavLink className='py-5 px-6  flex items-center justify-between text-[1rem]  bg-white'>
           <Box className=' gap-4 flex'>
             <TemplateIcon boxSize={6} /> Template
           </Box>
         </NavLink>
+        <Divider />
         <NavLink
           className='py-5 px-6  flex items-center justify-between text-[1rem]  bg-white'
           onClick={integrations.onToggle}
@@ -54,43 +57,44 @@ const SideBar = () => {
             fontSize='1.5rem'
           />
         </NavLink>
+
         <Collapse in={integrations.isOpen}>
-          <Box className='flex flex-col justify-center items-center gap-6 bg-white text-[1rem] p-4'>
-            <NavLink className=' flex items-center justify-center'>
+          <Box className='flex flex-col justify-center items-center gap-6 bg-white text-[1rem] py-4 px-10'>
+            <NavLink className='flex items-center text-[1rem] justify-between w-full px-6 '>
               <ProjectIcon boxSize={6} />
               <Text className='w-3/4'> Sections</Text>
             </NavLink>
-            <NavLink className='flex items-center justify-center'>
+            <NavLink className='flex items-center text-[1rem] justify-between w-full px-6'>
               <StaredIcon boxSize={6} />
               <Text className='w-3/4'> Stared</Text>
             </NavLink>
-            <NavLink>
-              <Box className=' gap-4 flex items-center justify-center'>
-                <ArchivedIcon boxSize={6} /> Archived
-              </Box>
+            <NavLink className='flex items-center text-[1rem] justify-between w-full px-6'>
+              <ArchivedIcon boxSize={6} />
+              <Text className='w-3/4'> Archived</Text>
             </NavLink>
-            <NavLink>
-              <Box className=' gap-4 flex items-center justify-center'>
-                <ViewIcon boxSize={6} /> View Mode
-              </Box>
+            <NavLink className='flex items-center text-[1rem] justify-between w-full px-6'>
+              <ViewIcon boxSize={6} />
+              <Text className='w-3/4'> View Mode</Text>
             </NavLink>
-            <NavLink>
-              <Box className=' gap-4 flex items-center justify-center w-full'>
-                <SetingdIcon boxSize={6} /> Settings
-              </Box>
+            <NavLink className='flex items-center text-[1rem] justify-between w-full px-6'>
+              <SetingdIcon boxSize={6} />
+              <Text className='w-3/4'> Settings</Text>
             </NavLink>
           </Box>
         </Collapse>
+        <Divider />
         <NavLink className='py-5 px-6  flex items-center justify-between text-[1rem]  bg-white'>
           <Box className=' gap-4 flex'>
             <HighlightIcon boxSize={6} /> Highlights
           </Box>
         </NavLink>
+        <Divider />
         <NavLink className='py-5 px-6  flex items-center justify-between text-[1rem]  bg-white'>
           <Box className=' gap-4 flex'>
             <SetingdIcon boxSize={6} /> Settings
           </Box>
         </NavLink>
+        <Divider />
       </Flex>
     </div>
   );

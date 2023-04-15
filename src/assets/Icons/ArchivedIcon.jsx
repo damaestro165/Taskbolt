@@ -1,8 +1,9 @@
+import { Icon } from '@chakra-ui/react';
 import React from 'react';
 
 const ArchivedIcon = (props) => {
   return (
-    <svg
+    <Icon
       width='25'
       height='24'
       viewBox='0 0 25 24'
@@ -17,7 +18,7 @@ const ArchivedIcon = (props) => {
         strokeLinecap='round'
         strokeLinejoin='round'
       />
-    </svg>
+    </Icon>
   );
 };
 
