@@ -59,7 +59,7 @@ const SideBar = () => {
         </NavLink>
 
         <Collapse in={integrations.isOpen}>
-          <Box className='flex flex-col justify-center items-center gap-6 bg-white text-[1rem] py-4 px-10'>
+          <Box className='flex flex-col justify-center items-center gap-8 bg-white text-[1rem] py-4 px-10'>
             <NavLink className='flex items-center text-[1rem] justify-between w-full px-6 '>
               <ProjectIcon boxSize={6} />
               <Text className='w-3/4'> Sections</Text>

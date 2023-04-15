@@ -36,7 +36,7 @@ const TopBar = () => {
         >
           Create Project
         </Button>
-        <MenuComp />
+        <MenuComp title='Quick Access' />
       </HStack>
       <HStack spacing='2rem'>
         <InputGroup size='lg' py='-2.5rem'>
