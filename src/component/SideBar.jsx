@@ -22,13 +22,14 @@ import ViewIcon from '../assets/Icons/ViewIcon';
 const SideBar = () => {
   const integrations = useDisclosure();
   return (
-    <div className='w-1/6 '>
+    <div className='w-1/6  '>
       <Flex
         direction='column'
         as='nav'
         fontSize='sm'
         aria-label='Main Navigation'
-        height='55rem'
+        bg='#f5f5f5'
+        height='100%'
       >
         <NavLink className='py-5 px-6  flex items-center justify-between text-[1rem]  bg-white'>
           <Box className=' gap-4 flex'>
@@ -95,6 +96,7 @@ const SideBar = () => {
           </Box>
         </NavLink>
         <Divider />
+        <div className='h-[15rem]'></div>
       </Flex>
     </div>
   );

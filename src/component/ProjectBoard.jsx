@@ -1,11 +1,12 @@
 import React from 'react';
 import ProjectBar from './ProjectBar';
+import SectionArea from './SectionArea';
 
 const ProjectBoard = () => {
   return (
-    <div className='w-5/6 '>
+    <div className='w-5/6  '>
       <ProjectBar />
-      <div className=' h-full bg-white w-full'>ff</div>
+      <SectionArea />
     </div>
   );
 };
