@@ -3,17 +3,18 @@ import React from 'react';
 import { HiOutlineChevronDown } from 'react-icons/hi';
 import ChevondownIcon from '../assets/Icons/ChevondownIcon';
 
-const MenuComp = ({ title }) => {
+const MenuComp = ({ title, color }) => {
   return (
     <Menu>
       <MenuButton
         as={Button}
         variant='unstyled'
-        rightIcon={<ChevondownIcon boxSize='1.5rem' color='white' />}
-        color='white'
+        rightIcon={<ChevondownIcon boxSize='1rem' color={color} />}
+        color={color || 'black'}
         display='flex'
         justifyContent='center'
         alignItems='center'
+        fontWeight='light'
       >
         {title}
       </MenuButton>

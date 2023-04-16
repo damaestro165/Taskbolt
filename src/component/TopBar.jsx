@@ -36,7 +36,7 @@ const TopBar = () => {
         >
           Create Project
         </Button>
-        <MenuComp title='Quick Access' />
+        <MenuComp title='Quick Access' color='white' />
       </HStack>
       <HStack spacing='2rem'>
         <InputGroup size='lg' py='-2.5rem'>
@@ -64,7 +64,7 @@ const TopBar = () => {
           </InputRightElement>
         </InputGroup>
         <NotificationIcon boxSize={6} />
-        <Avatar name='T K' src='' />
+        <Avatar name='T K' src='' border='1px' />
       </HStack>
     </Box>
   );
