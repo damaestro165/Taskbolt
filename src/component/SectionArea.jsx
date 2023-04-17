@@ -1,10 +1,12 @@
 import { Box, Button } from '@chakra-ui/react';
 import React from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
+import TaskCard from './TaskCard';
 
 const SectionArea = () => {
   return (
     <Box className='bg-white w-full h-full flex gap-5 p-6 '>
+      <TaskCard />
       <Box
         as={Button}
         bg='#F5F5F5'
