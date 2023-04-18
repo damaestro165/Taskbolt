@@ -14,6 +14,7 @@ import ChevondownIcon from '../assets/Icons/ChevondownIcon';
 import MenuComp from './Menu';
 import ShareIcon from '../assets/Icons/ShareIcon';
 import { BiPlus } from 'react-icons/bi';
+import ProjectInfoModal from './ProjectInfoModal';
 
 const ProjectBar = () => {
   return (
@@ -21,12 +22,7 @@ const ProjectBar = () => {
       <Box className=' flex items-center gap-5'>
         <Text className=' text-xl font-semibold'>Team Microsaas</Text>
         <StaredIcon boxSize={6} />
-        <IconButton
-          bg='#e6e0f3'
-          display='flex'
-          alignItems='center'
-          icon={<ChevondownIcon boxSize='1rem' />}
-        />
+        <ProjectInfoModal />
         <Center height='2rem'>
           <Divider
             orientation='vertical'
