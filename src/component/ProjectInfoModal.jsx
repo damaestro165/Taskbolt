@@ -16,9 +16,17 @@ import {
   Box,
   Divider,
   VStack,
+  Avatar,
+  Circle,
 } from '@chakra-ui/react';
 import ChevondownIcon from '../assets/Icons/ChevondownIcon';
 import CreateIcon from '../assets/Icons/CreateIcon';
+import ShareIcon from '../assets/Icons/ShareIcon';
+import MoreIcon from '../assets/Icons/MoreIcon';
+import { AiOutlinePlus } from 'react-icons/ai';
+import PersonIcon from '../assets/Icons/PersonIcon';
+import ArchivedIcon from '../assets/Icons/ArchivedIcon';
+import DeleteIcon from '../assets/Icons/DeleteIcon';
 
 const ProjectInfoModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -43,14 +51,14 @@ const ProjectInfoModal = () => {
           }}
         >
           <ModalHeader>Project Action</ModalHeader>
-          <ModalBody>
+          <ModalBody className='flex flex-col gap-4'>
             <HStack>
               <Text>Team Microsaas</Text>
               <Spacer />
               <CreateIcon boxSize={6} />
             </HStack>
             <HStack>
-              <Text>Team Microsaas</Text>
+              <Text>Date Created</Text>
               <Spacer />
               <Box>
                 <Text>08 March 2023 </Text>
@@ -58,10 +66,52 @@ const ProjectInfoModal = () => {
               </Box>
             </HStack>
             <Divider />
-            <Box>
-              <Text>Members</Text>
-              <HStack></HStack>
+            <Box className='flex flex-col gap-8'>
+              <Text fontWeight='bold'>Members</Text>
+              <HStack>
+                <Avatar name='E B' src='' size='sm' />
+                <Text>Erick Powel</Text>
+                <Spacer />
+                <Circle size='2rem' bg='#DCDCDC' fontWeight='extrabold'>
+                  0
+                </Circle>
+                <MoreIcon boxSize={6} />
+              </HStack>
+              <HStack>
+                <Avatar name='E B' src='' size='sm' />
+                <Text>Erick Powel</Text>
+                <Spacer />
+                <Circle size='2rem' bg='#DCDCDC' fontWeight='extrabold'>
+                  0
+                </Circle>
+                <MoreIcon boxSize={6} />
+              </HStack>
             </Box>
+            <Box
+              as={Button}
+              bg='#F5F5F5'
+              color='brand.100'
+              rightIcon={<PersonIcon boxSize={6} />}
+              variant='solid'
+              fontSize='md'
+              p='1.5rem'
+              border='1px'
+              borderColor='#DCDCDC'
+              width='full'
+            >
+              Add New Member
+            </Box>
+            <Divider />
+            <HStack color='#5720DD'>
+              <Text>Archived</Text>
+              <Spacer />
+              <ArchivedIcon boxSize={6} color='#5720DD' />
+            </HStack>
+            <HStack color='red'>
+              <Text>Delete Project</Text>
+              <Spacer />
+              <DeleteIcon boxSize={6} />
+            </HStack>
           </ModalBody>
         </ModalContent>
       </Modal>
