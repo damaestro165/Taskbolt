@@ -27,6 +27,7 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import PersonIcon from '../assets/Icons/PersonIcon';
 import ArchivedIcon from '../assets/Icons/ArchivedIcon';
 import DeleteIcon from '../assets/Icons/DeleteIcon';
+import ModelPopover from './ModelPopover';
 
 const ProjectInfoModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -46,8 +47,8 @@ const ProjectInfoModal = () => {
         <ModalContent
           containerProps={{
             justifyContent: 'flex-start',
-            paddingLeft: '15rem',
-            paddingTop: '7rem',
+            paddingLeft: '17rem',
+            paddingTop: '6rem',
           }}
         >
           <ModalHeader>Project Action</ModalHeader>
@@ -84,7 +85,9 @@ const ProjectInfoModal = () => {
                 <Circle size='2rem' bg='#DCDCDC' fontWeight='extrabold'>
                   0
                 </Circle>
-                <MoreIcon boxSize={6} />
+                <ModelPopover>
+                  <MoreIcon boxSize={6} />
+                </ModelPopover>
               </HStack>
             </Box>
             <Box
