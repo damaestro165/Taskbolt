@@ -27,7 +27,7 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import PersonIcon from '../assets/Icons/PersonIcon';
 import ArchivedIcon from '../assets/Icons/ArchivedIcon';
 import DeleteIcon from '../assets/Icons/DeleteIcon';
-import ModelPopover from './ModelPopover';
+
 import MemberMenu from './MemberMenu';
 
 const ProjectInfoModal = () => {
@@ -77,7 +77,7 @@ const ProjectInfoModal = () => {
                 <Circle size='2rem' bg='#DCDCDC' fontWeight='extrabold'>
                   0
                 </Circle>
-                <MoreIcon boxSize={6} />
+                <MemberMenu />
               </HStack>
               <HStack>
                 <Avatar name='E B' src='' size='sm' />
@@ -86,9 +86,7 @@ const ProjectInfoModal = () => {
                 <Circle size='2rem' bg='#DCDCDC' fontWeight='extrabold'>
                   0
                 </Circle>
-                <MemberMenu>
-                  <MoreIcon boxSize={6} />
-                </MemberMenu>
+                <MemberMenu />
               </HStack>
             </Box>
             <Box
