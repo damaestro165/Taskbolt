@@ -52,8 +52,8 @@ const ProjectInfoModal = () => {
             paddingTop: '6rem',
           }}
         >
-          <ModalHeader>Project Action</ModalHeader>
-          <ModalBody className='flex flex-col gap-4'>
+          <ModalBody paddingY={10} className='flex flex-col gap-4'>
+            <Text>Project Action</Text>
             <HStack>
               <Text>Team Microsaas</Text>
               <Spacer />

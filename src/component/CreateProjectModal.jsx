@@ -1,29 +1,114 @@
 import {
+  Box,
+  Button,
   Modal,
   ModalBody,
   ModalContent,
   ModalHeader,
   ModalOverlay,
   Text,
+  useDisclosure,
+  Link,
+  Icon,
+  IconButton,
+  HStack,
+  Spacer,
+  Input,
+  VStack,
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
+  Image,
+  Center,
 } from '@chakra-ui/react';
 import React from 'react';
+import { AiOutlinePlus } from 'react-icons/ai';
+import { BsArrowLeft } from 'react-icons/bs';
+import { IoMdClose } from 'react-icons/io';
+import DisplayImage from '../assets/otpimage.png';
 
-const CreateProjectModal = ({ childern }) => {
+const CreateProjectModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      {childern}
-
-      <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+      <Button
+        onClick={onOpen}
+        rightIcon={<AiOutlinePlus />}
+        bg='white'
+        variant='solid'
+        color='brand.100'
+        fontSize='md'
+        py='1.5rem'
+      >
+        Create Project
+      </Button>
+      <Modal
+        blockScrollOnMount={false}
+        isOpen={isOpen}
+        onClose={onClose}
+        size='5xl'
+      >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
-
-          <ModalBody>
-            <Text fontWeight='bold' mb='1rem'>
-              You can scroll the content behind the modal
-            </Text>
+          <ModalBody margin={0} padding={0}>
+            <Box className='h-[35rem] flex'>
+              <Box className='w-1/2 p-5 flex flex-col justify-between h-full'>
+                <HStack>
+                  <Text>New Project</Text>
+                  <Spacer />
+                  <Text>Back</Text>
+                </HStack>
+                <VStack>
+                  <Text>Add Members To Project</Text>
+                  <Text>Add members with emails or usernames. </Text>
+                  <Input type='email' placehoder='eg. johnboyega@gmail.com' />
+                  <Button width='full'>Start Project</Button>
+                </VStack>
+                <VStack>
+                  <HStack>
+                    <Box>
+                      <Text>Step 1</Text>
+                      <Text>Set project name and description</Text>
+                    </Box>
+                    <Spacer />
+                    <Box>
+                      <Text>Step 2</Text>
+                      <Text>Add members to project</Text>
+                    </Box>
+                  </HStack>
+                  <Slider
+                    aria-label='slider'
+                    step={30}
+                    value={50}
+                    focusThumbOnChange={false}
+                    isReadOnly
+                    size='lg'
+                  >
+                    <SliderTrack>
+                      <SliderFilledTrack bg='#5720DD' />
+                    </SliderTrack>
+                    <SliderThumb
+                      bg='#5720DD'
+                      border='2px'
+                      borderColor='white'
+                    />
+                  </Slider>
+                </VStack>
+              </Box>
+              <Box className='w-1/2 bg-[#F5F5F5] py-5 flex flex-col overflow-hidden '>
+                <Box className='px-5 self-end'>
+                  <IconButton icon={<IoMdClose />} />
+                </Box>
+                <Center className=' w-full mt-10 ml-[10rem]'>
+                  <Image
+                    src={DisplayImage}
+                    className=' w-[55rem] h-[24rem]   object-cover rounded-md  '
+                  />
+                </Center>
+              </Box>
+            </Box>
           </ModalBody>
         </ModalContent>
       </Modal>

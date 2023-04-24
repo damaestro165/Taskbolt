@@ -20,22 +20,15 @@ import NotificationIcon from '../assets/Icons/BellIcon';
 import { CiSearch } from 'react-icons/ci';
 
 import { RiCommandFill } from 'react-icons/ri';
+import CreateProjectModal from './CreateProjectModal';
 
 const TopBar = () => {
   return (
     <Box className='bg-[#5720DD] w-full p-5 px-10 flex justify-between'>
       <HStack spacing='2rem'>
         <Image src={Logo} alt='logo' w='8rem' />
-        <Button
-          rightIcon={<AiOutlinePlus />}
-          bg='white'
-          variant='solid'
-          color='brand.100'
-          fontSize='md'
-          py='1.5rem'
-        >
-          Create Project
-        </Button>
+        <CreateProjectModal />
+
         <MenuComp title='Quick Access' color='white' />
       </HStack>
       <HStack spacing='2rem'>
