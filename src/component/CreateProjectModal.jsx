@@ -21,6 +21,10 @@ import {
   SliderThumb,
   Image,
   Center,
+  FormControl,
+  FormLabel,
+  FormHelperText,
+  Textarea,
 } from '@chakra-ui/react';
 import React from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
@@ -60,11 +64,28 @@ const CreateProjectModal = () => {
                   <Spacer />
                   <Text>Back</Text>
                 </HStack>
-                <VStack>
+                {/* <VStack>
                   <Text>Add Members To Project</Text>
                   <Text>Add members with emails or usernames. </Text>
                   <Input type='email' placehoder='eg. johnboyega@gmail.com' />
                   <Button width='full'>Start Project</Button>
+                </VStack> */}
+                <VStack>
+                  <Box
+                    as='form'
+                    width='full'
+                    className='flex flex-col p-5 gap-5'
+                  >
+                    <FormControl>
+                      <FormLabel>Project Name</FormLabel>
+                      <Input type='email' placeholder='Taskbolt' width='full' />
+                    </FormControl>
+                    <FormControl>
+                      <FormLabel>Project Description</FormLabel>
+                      <Textarea placeholder='Text here ...' />
+                    </FormControl>
+                    <Button width='full'>Continue</Button>
+                  </Box>
                 </VStack>
                 <VStack>
                   <HStack>
@@ -80,8 +101,8 @@ const CreateProjectModal = () => {
                   </HStack>
                   <Slider
                     aria-label='slider'
-                    step={30}
-                    value={50}
+                    step={50}
+                    value={0}
                     focusThumbOnChange={false}
                     isReadOnly
                     size='lg'
@@ -99,7 +120,7 @@ const CreateProjectModal = () => {
               </Box>
               <Box className='w-1/2 bg-[#F5F5F5] py-5 flex flex-col overflow-hidden '>
                 <Box className='px-5 self-end'>
-                  <IconButton icon={<IoMdClose />} />
+                  <IconButton icon={<IoMdClose />} onClick={onClose} />
                 </Box>
                 <Center className=' w-full mt-10 ml-[10rem]'>
                   <Image
