@@ -15,6 +15,7 @@ import MenuComp from './Menu';
 import ShareIcon from '../assets/Icons/ShareIcon';
 import { BiPlus } from 'react-icons/bi';
 import ProjectInfoModal from './ProjectInfoModal';
+import ShareModal from './ShareModal';
 
 const ProjectBar = () => {
   return (
@@ -41,14 +42,7 @@ const ProjectBar = () => {
             icon={<BiPlus fontSize='1.5rem' color='#5720DD' />}
           />
         </AvatarGroup>
-        <Button
-          bg='#d5caf0'
-          display='flex'
-          alignItems='center'
-          rightIcon={<ShareIcon boxSize='1.5rem' />}
-        >
-          Share
-        </Button>
+        <ShareModal />
       </Box>
     </Box>
   );

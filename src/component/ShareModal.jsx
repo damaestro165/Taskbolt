@@ -9,33 +9,49 @@ import {
   ModalCloseButton,
   useDisclosure,
   Button,
+  Text,
+  HStack,
+  Input,
 } from '@chakra-ui/react';
+import ShareIcon from '../assets/Icons/ShareIcon';
 
 const ShareModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <Button onClick={onOpen}>Open Modal</Button>
+      <Button
+        bg='#d5caf0'
+        display='flex'
+        alignItems='center'
+        rightIcon={<ShareIcon boxSize='1.5rem' />}
+        onClick={onOpen}
+      >
+        Share
+      </Button>
 
-      <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+      <Modal
+        blockScrollOnMount={false}
+        isOpen={isOpen}
+        onClose={onClose}
+        size='2xl'
+      >
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+        <ModalContent
+          containerProps={{
+            justifyContent: 'center',
+            marginTop: '12rem',
+          }}
+        >
           <ModalCloseButton />
-          <ModalBody>
-            <Text fontWeight='bold' mb='1rem'>
-              You can scroll the content behind the modal
-            </Text>
-            <Lorem count={2} />
+          <ModalBody padding='2rem'>
+            <Text mb='2rem'>Share Project</Text>
+            <Text mb='1rem'>Invite members with emails or username</Text>
+            <HStack>
+              <Input type='email' placeholder='eg. johnboyega@gmail.com' />
+              <Button>Add As</Button>
+            </HStack>
           </ModalBody>
-
-          <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button variant='ghost'>Secondary Action</Button>
-          </ModalFooter>
         </ModalContent>
       </Modal>
     </>
