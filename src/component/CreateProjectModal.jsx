@@ -64,29 +64,7 @@ const CreateProjectModal = () => {
                   <Spacer />
                   <Text>Back</Text>
                 </HStack>
-                {/* <VStack>
-                  <Text>Add Members To Project</Text>
-                  <Text>Add members with emails or usernames. </Text>
-                  <Input type='email' placehoder='eg. johnboyega@gmail.com' />
-                  <Button width='full'>Start Project</Button>
-                </VStack> */}
-                <VStack>
-                  <Box
-                    as='form'
-                    width='full'
-                    className='flex flex-col p-5 gap-5'
-                  >
-                    <FormControl>
-                      <FormLabel>Project Name</FormLabel>
-                      <Input type='email' placeholder='Taskbolt' width='full' />
-                    </FormControl>
-                    <FormControl>
-                      <FormLabel>Project Description</FormLabel>
-                      <Textarea placeholder='Text here ...' />
-                    </FormControl>
-                    <Button width='full'>Continue</Button>
-                  </Box>
-                </VStack>
+                <StepOne />
                 <VStack>
                   <HStack>
                     <Box>
@@ -134,6 +112,53 @@ const CreateProjectModal = () => {
         </ModalContent>
       </Modal>
     </>
+  );
+};
+
+const StepOne = () => {
+  return (
+    <VStack>
+      <Box as='form' width='full' className='flex flex-col p-5 gap-5'>
+        <FormControl>
+          <FormLabel>Project Name</FormLabel>
+          <Input type='email' placeholder='Taskbolt' width='full' />
+        </FormControl>
+        <Box className='w-full flex flex-col gap-2 '>
+          <Text>Organize Your Project In Sections</Text>
+          <Box className=' border-2 p-2 rounded-md'>To do</Box>
+          <Box className=' border-2 p-2 rounded-md'>Doing</Box>
+          <Box className=' border-2 p-2 rounded-md'>Done</Box>
+        </Box>
+        <Button width='full'>Continue</Button>
+      </Box>
+    </VStack>
+  );
+};
+const StepTwo = () => {
+  return (
+    <VStack>
+      <Box as='form' width='full' className='flex flex-col p-5 gap-5'>
+        <FormControl>
+          <FormLabel>Project Name</FormLabel>
+          <Input type='email' placeholder='Taskbolt' width='full' />
+        </FormControl>
+        <FormControl>
+          <FormLabel>Project Description</FormLabel>
+          <Textarea placeholder='Text here ...' />
+        </FormControl>
+        <Button width='full'>Continue</Button>
+      </Box>
+    </VStack>
+  );
+};
+const StepThree = () => {
+  return (
+    <VStack>
+      <Text>Add Members To Project</Text>
+      <Text>Add members with emails or usernames. </Text>
+      <Input type='email' placehoder='eg. johnboyega@gmail.com' />
+      <Button width='full'>Start Project</Button>
+    </VStack>
   );
 };
 
