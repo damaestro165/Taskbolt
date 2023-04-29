@@ -26,14 +26,15 @@ import {
   FormHelperText,
   Textarea,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
-import { BsArrowLeft } from 'react-icons/bs';
 import { IoMdClose } from 'react-icons/io';
 import DisplayImage from '../assets/otpimage.png';
 
 const CreateProjectModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [step, setStep] = useState(1);
+  const [progress, setProgress] = useState(0);
 
   return (
     <>
@@ -62,9 +63,34 @@ const CreateProjectModal = () => {
                 <HStack>
                   <Text>New Project</Text>
                   <Spacer />
-                  <Text>Back</Text>
+                  <Button
+                    onClick={() => {
+                      setStep(step - 1);
+                      setProgress(progress - 50);
+                    }}
+                    isDisabled={step === 1}
+                    variant='unstyled'
+                  >
+                    Back
+                  </Button>
                 </HStack>
-                <StepOne />
+                {step === 1 ? (
+                  <StepOne
+                    step={step}
+                    progress={progress}
+                    setProgress={setProgress}
+                    setStep={setStep}
+                  />
+                ) : step === 2 ? (
+                  <StepTwo
+                    step={step}
+                    progress={progress}
+                    setProgress={setProgress}
+                    setStep={setStep}
+                  />
+                ) : (
+                  <StepThree />
+                )}
                 <VStack>
                   <HStack>
                     <Box>
@@ -80,7 +106,7 @@ const CreateProjectModal = () => {
                   <Slider
                     aria-label='slider'
                     step={50}
-                    value={0}
+                    value={progress}
                     focusThumbOnChange={false}
                     isReadOnly
                     size='lg'
@@ -115,7 +141,7 @@ const CreateProjectModal = () => {
   );
 };
 
-const StepOne = () => {
+const StepOne = ({ setStep, step, progress, setProgress }) => {
   return (
     <VStack>
       <Box as='form' width='full' className='flex flex-col p-5 gap-5'>
@@ -129,25 +155,34 @@ const StepOne = () => {
           <Box className=' border-2 p-2 rounded-md'>Doing</Box>
           <Box className=' border-2 p-2 rounded-md'>Done</Box>
         </Box>
-        <Button width='full'>Continue</Button>
+        <Button
+          width='full'
+          onClick={() => {
+            setStep(step + 1);
+            setProgress(progress + 50);
+          }}
+        >
+          Continue
+        </Button>
       </Box>
     </VStack>
   );
 };
-const StepTwo = () => {
+const StepTwo = ({ setStep, step, progress, setProgress }) => {
   return (
     <VStack>
-      <Box as='form' width='full' className='flex flex-col p-5 gap-5'>
-        <FormControl>
-          <FormLabel>Project Name</FormLabel>
-          <Input type='email' placeholder='Taskbolt' width='full' />
-        </FormControl>
-        <FormControl>
-          <FormLabel>Project Description</FormLabel>
-          <Textarea placeholder='Text here ...' />
-        </FormControl>
-        <Button width='full'>Continue</Button>
-      </Box>
+      <Text>Add Members To Project</Text>
+      <Text>Add members with emails or usernames. </Text>
+      <Input type='email' placehoder='eg. johnboyega@gmail.com' />
+      <Button
+        width='full'
+        onClick={() => {
+          setStep(step + 1);
+          setProgress(progress + 50);
+        }}
+      >
+        Start Project
+      </Button>
     </VStack>
   );
 };
@@ -157,7 +192,9 @@ const StepThree = () => {
       <Text>Add Members To Project</Text>
       <Text>Add members with emails or usernames. </Text>
       <Input type='email' placehoder='eg. johnboyega@gmail.com' />
-      <Button width='full'>Start Project</Button>
+      <Button width='full' backgroundColor='#5720DD' color='white'>
+        Share Project
+      </Button>
     </VStack>
   );
 };
