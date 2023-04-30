@@ -14,6 +14,7 @@ import {
   Input,
 } from '@chakra-ui/react';
 import ShareIcon from '../assets/Icons/ShareIcon';
+import { AiOutlinePlus } from 'react-icons/ai';
 
 const ShareModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -48,8 +49,22 @@ const ShareModal = () => {
             <Text mb='2rem'>Share Project</Text>
             <Text mb='1rem'>Invite members with emails or username</Text>
             <HStack>
-              <Input type='email' placeholder='eg. johnboyega@gmail.com' />
-              <Button>Add As</Button>
+              <Input
+                type='email'
+                placeholder='eg. johnboyega@gmail.com'
+                width='25rem'
+              />
+              <Button
+                onClick={onOpen}
+                rightIcon={<AiOutlinePlus />}
+                bg='#DCDCDC'
+                variant='solid'
+                color='brand.100'
+                fontSize='md'
+                py='1.5rem'
+              >
+                Add As
+              </Button>
             </HStack>
           </ModalBody>
         </ModalContent>
