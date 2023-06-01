@@ -12,6 +12,8 @@ import {
   Text,
   HStack,
   Input,
+  VStack,
+  Box,
 } from '@chakra-ui/react';
 import ShareIcon from '../assets/Icons/ShareIcon';
 import { AiOutlinePlus } from 'react-icons/ai';
@@ -48,24 +50,52 @@ const ShareModal = () => {
           <ModalBody padding='2rem'>
             <Text mb='2rem'>Share Project</Text>
             <Text mb='1rem'>Invite members with emails or username</Text>
-            <HStack>
-              <Input
-                type='email'
-                placeholder='eg. johnboyega@gmail.com'
-                width='25rem'
-              />
-              <Button
-                onClick={onOpen}
-                rightIcon={<AiOutlinePlus />}
-                bg='#DCDCDC'
-                variant='solid'
-                color='brand.100'
-                fontSize='md'
-                py='1.5rem'
-              >
-                Add As
-              </Button>
-            </HStack>
+            <VStack spacing={5}>
+              <HStack>
+                <Input
+                  type='email'
+                  placeholder='eg. johnboyega@gmail.com'
+                  width='25rem'
+                />
+                <Button
+                  onClick={onOpen}
+                  rightIcon={<AiOutlinePlus />}
+                  bg='#DCDCDC'
+                  variant='solid'
+                  color='brand.100'
+                  fontSize='md'
+                  py='1.5rem'
+                >
+                  Add As
+                </Button>
+              </HStack>
+              <HStack>
+                <Box
+                  onClick={onOpen}
+                  bg='#DCDCDC'
+                  variant='solid'
+                  fontSize='md'
+                  p='1rem'
+                  width='25rem'
+                  display='flex'
+                  height='3rem'
+                  borderRadius={5}
+                >
+                  johnboyega@gmail.com
+                </Box>
+                <Button
+                  onClick={onOpen}
+                  rightIcon={<AiOutlinePlus />}
+                  bg='#DCDCDC'
+                  variant='solid'
+                  color='brand.100'
+                  fontSize='md'
+                  py='1.5rem'
+                >
+                  Add As
+                </Button>
+              </HStack>
+            </VStack>
           </ModalBody>
         </ModalContent>
       </Modal>
