@@ -58,6 +58,7 @@ const Login = () => {
         }
       })
       .catch(function (error) {
+        console.log(error);
         if (error?.response?.data?.msg === 'User not verified!') {
           localStorage.setItem(
             'Id',

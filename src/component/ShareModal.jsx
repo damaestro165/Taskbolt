@@ -3,8 +3,6 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   useDisclosure,
@@ -14,9 +12,12 @@ import {
   Input,
   VStack,
   Box,
+  IconButton,
 } from '@chakra-ui/react';
 import ShareIcon from '../assets/Icons/ShareIcon';
 import { AiOutlinePlus } from 'react-icons/ai';
+import { BiChevronDown } from 'react-icons/bi';
+import { BsDashLg } from 'react-icons/bs';
 
 const ShareModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -48,8 +49,12 @@ const ShareModal = () => {
         >
           <ModalCloseButton />
           <ModalBody padding='2rem'>
-            <Text mb='2rem'>Share Project</Text>
-            <Text mb='1rem'>Invite members with emails or username</Text>
+            <Text mb='2rem' fontSize='1.2rem' fontWeight='extrabold'>
+              Share Project
+            </Text>
+            <Text mb='1rem' fontWeight='bold'>
+              Invite members with emails or username
+            </Text>
             <VStack spacing={5}>
               <HStack>
                 <Input
@@ -72,27 +77,35 @@ const ShareModal = () => {
               <HStack>
                 <Box
                   onClick={onOpen}
-                  bg='#DCDCDC'
+                  bg='#F5F5F5'
                   variant='solid'
                   fontSize='md'
                   p='1rem'
                   width='25rem'
                   display='flex'
+                  alignItems='center'
+                  justifyContent='space-between'
                   height='3rem'
                   borderRadius={5}
                 >
-                  johnboyega@gmail.com
+                  <Text> johnboyega@gmail.com</Text>
+                  <IconButton
+                    size={6}
+                    bg='#DCDCDC'
+                    padding={1}
+                    icon={<BsDashLg color='blue' />}
+                  />
                 </Box>
                 <Button
+                  rightIcon={<BiChevronDown />}
                   onClick={onOpen}
-                  rightIcon={<AiOutlinePlus />}
                   bg='#DCDCDC'
                   variant='solid'
-                  color='brand.100'
                   fontSize='md'
                   py='1.5rem'
+                  fontWeight='light'
                 >
-                  Add As
+                  Member
                 </Button>
               </HStack>
             </VStack>

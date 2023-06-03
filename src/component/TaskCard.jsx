@@ -11,6 +11,7 @@ import React from 'react';
 import CreateIcon from '../assets/Icons/CreateIcon';
 import FourdotIcon from '../assets/Icons/FourdotIcon';
 import { AiOutlinePlus } from 'react-icons/ai';
+import TaskItem from './TaskItem';
 
 const TaskCard = () => {
   return (
@@ -26,6 +27,7 @@ const TaskCard = () => {
           <FourdotIcon boxSize={6} />
         </HStack>
         <Divider borderWidth='.1rem' />
+        <TaskItem />
         <Box
           as={Button}
           bg='#F5F5F5'
