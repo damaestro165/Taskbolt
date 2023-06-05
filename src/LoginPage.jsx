@@ -32,7 +32,7 @@ const Login = () => {
 
     axios
       .post(
-        'https://taskbolt-user-staging.up.railway.app/api/v1/users/login',
+        'https://project-sprint-staging.up.railway.app/api/v1/users/login',
         {
           email: email,
           password: password,

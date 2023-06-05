@@ -48,7 +48,7 @@ const ResetPassword = () => {
 
     try {
       const response = await axios.post(
-        'https://taskbolt-user-staging.up.railway.app/api/v1/users/resetpassword',
+        'https://project-sprint-staging.up.railway.app/api/v1/users/resetpassword',
         {
           password: password,
           token: token,

@@ -36,7 +36,7 @@ const Signup = () => {
 
     axios
       .post(
-        'https://taskbolt-user-staging.up.railway.app/api/v1/users/register',
+        'https://project-sprint-staging.up.railway.app/api/v1/users/register',
         {
           firstname: firstName,
           lastname: lastName,

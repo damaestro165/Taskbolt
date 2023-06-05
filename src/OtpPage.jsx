@@ -82,7 +82,7 @@ const OtpPage = () => {
     e.preventDefault();
     axios
       .post(
-        'https://taskbolt-user-staging.up.railway.app/api/v1/users/verifyotp',
+        'https://project-sprint-staging.up.railway.app/api/v1/users/verifyotp',
         {
           id: Id,
           otp: otp,
