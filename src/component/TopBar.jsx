@@ -50,7 +50,7 @@ const TopBar = () => {
             <Button
               fontSize='0.8rem'
               leftIcon={<RiCommandFill fontSize='1rem' />}
-              h='2rem'
+              h='1.5rem'
             >
               F
             </Button>
