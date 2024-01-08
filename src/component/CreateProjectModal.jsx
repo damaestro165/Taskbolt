@@ -31,11 +31,17 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import { IoMdClose } from 'react-icons/io';
 import DisplayImage from '../assets/otpimage.png';
 import { BsDashLg } from 'react-icons/bs';
+import axios from 'axios';
 
 const CreateProjectModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [step, setStep] = useState(1);
   const [progress, setProgress] = useState(0);
+
+  const [createContent, setCreateContent] = useState([]);
+  const handleCreateContent = (name, description) => {
+    setCreateContent([{ projectName: name, projectDesc: description }]);
+  };
 
   return (
     <>
@@ -81,9 +87,10 @@ const CreateProjectModal = () => {
                     progress={progress}
                     setProgress={setProgress}
                     setStep={setStep}
+                    handleCreateContent={handleCreateContent}
                   />
                 ) : (
-                  <StepThree />
+                  <StepThree createContent={createContent} />
                 )}
                 <VStack>
                   <HStack>
@@ -135,7 +142,13 @@ const CreateProjectModal = () => {
   );
 };
 
-const StepOne = ({ setStep, step, progress, setProgress }) => {
+const StepOne = ({
+  setStep,
+  step,
+  progress,
+  setProgress,
+  handleCreateContent,
+}) => {
   const [projectname, setProjectname] = useState('');
   const [projectDesc, setProjecDesc] = useState('');
 
@@ -151,7 +164,6 @@ const StepOne = ({ setStep, step, progress, setProgress }) => {
             onChange={(e) => setProjectname(e.target.value)}
             width='full'
             h='3rem'
-            on
           />
         </FormControl>
         <FormControl>
@@ -172,6 +184,7 @@ const StepOne = ({ setStep, step, progress, setProgress }) => {
           onClick={() => {
             setStep(step + 1);
             setProgress(progress + 50);
+            handleCreateContent(projectname, projectDesc);
           }}
         >
           Continue
@@ -181,9 +194,15 @@ const StepOne = ({ setStep, step, progress, setProgress }) => {
   );
 };
 
-const StepThree = () => {
+const StepThree = ({ createContent }) => {
   const [emailLists, setemailLists] = useState([]);
+  const userData = JSON.parse(localStorage.getItem('User'));
   const [email, setEmail] = useState('');
+  const id = userData.id;
+  const token = userData.token;
+  const name = createContent[0].projectName;
+  const description = createContent[0].projectDesc;
+
   const handleAddToEmailList = () => {
     if (email === '') return setemailLists(emailLists);
     setemailLists([...emailLists, email]);
@@ -191,6 +210,29 @@ const StepThree = () => {
   const handleRemove = (item) => {
     const fliterdEmail = emailLists.filter((email) => email !== item);
     setemailLists(fliterdEmail);
+  };
+
+  const handleShare = () => {
+    axios
+      .post(
+        'https://project-sprint-staging.up.railway.app/api/v1/project/create',
+
+        {
+          user_id: userData.id,
+          name: name,
+          description: description,
+          members: emailLists,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(function (response) {
+        console.log(response);
+      });
   };
 
   return (
@@ -249,7 +291,13 @@ const StepThree = () => {
         ))}
       </Box>
 
-      <Button width='full' backgroundColor='#5720DD' p='1.5rem' color='white'>
+      <Button
+        width='full'
+        backgroundColor='#5720DD'
+        p='1.5rem'
+        color='white'
+        onClick={handleShare}
+      >
         Share Project
       </Button>
     </Box>
