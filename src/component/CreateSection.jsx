@@ -1,10 +1,22 @@
 import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from '@chakra-ui/react'
 import React from 'react'
 import { AiOutlinePlus } from 'react-icons/ai';
+import { useDispatch } from 'react-redux';
+import { addSection } from '../store';
 
-const AddTask = () => {
+const CreateSection = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-    const initialRef = React.useRef(null)
+    const initialRef = React.useRef('')
+    const dispatch = useDispatch();
+     
+  
+    const handleAddSection = (e) => {
+      e.preventDefault();
+      const sectionName = initialRef.current.value;
+      dispatch(addSection(sectionName));
+      initialRef.current.value = ''
+    
+    }
 
   return (
     <>
@@ -27,7 +39,7 @@ const AddTask = () => {
       
 
       <Modal
-        initialFocusRef={initialRef}
+       
         isOpen={isOpen}
         onClose={onClose}
       >
@@ -38,13 +50,13 @@ const AddTask = () => {
           <ModalBody pb={6}>
             <FormControl>
               <FormLabel>Section Name</FormLabel>
-              <Input ref={initialRef} placeholder='To do ..' />
+              <Input ref={initialRef} type='text'  placeholder='To do ..' />
             </FormControl>
 
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={onClose}>
+            <Button colorScheme='blue' mr={3} onClick={handleAddSection}>
               Add
             </Button>
             <Button onClick={onClose}>Cancel</Button>
@@ -55,4 +67,4 @@ const AddTask = () => {
   )
 }
 
-export default AddTask
+export default CreateSection

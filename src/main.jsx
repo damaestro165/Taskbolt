@@ -4,6 +4,10 @@ import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import App from './App';
 import './index.css';
 import '@fontsource/poppins';
+import { store } from './store';
+import { Provider } from 'react-redux';
+
+
 
 const activeLabelStyles = {
   transform: 'scale(0.85) translateY(-29px)',
@@ -52,7 +56,9 @@ export const theme = extendTheme({
 });
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <ChakraProvider theme={theme}>
-    <App />
-  </ChakraProvider>
+   <Provider store={store}>
+    <ChakraProvider theme={theme}>
+      <App />
+    </ChakraProvider>
+  </Provider>
 );

@@ -198,10 +198,10 @@ const StepThree = ({ createContent }) => {
   const [emailLists, setemailLists] = useState([]);
   const userData = JSON.parse(localStorage.getItem('User'));
   const [email, setEmail] = useState('');
-  const id = userData.id;
-  const token = userData.token;
-  const name = createContent[0].projectName;
-  const description = createContent[0].projectDesc;
+  // const id = userData.id;
+  // const token = userData.token;
+  // const name = createContent[0].projectName;
+  // const description = createContent[0].projectDesc;
 
   const handleAddToEmailList = () => {
     if (email === '') return setemailLists(emailLists);
@@ -212,28 +212,28 @@ const StepThree = ({ createContent }) => {
     setemailLists(fliterdEmail);
   };
 
-  const handleShare = () => {
-    axios
-      .post(
-        'https://project-sprint-staging.up.railway.app/api/v1/project/create',
+  // const handleShare = () => {
+  //   axios
+  //     .post(
+  //       'https://project-sprint-staging.up.railway.app/api/v1/project/create',
 
-        {
-          user_id: userData.id,
-          name: name,
-          description: description,
-          members: emailLists,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json; charset=utf-8',
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then(function (response) {
-        console.log(response);
-      });
-  };
+  //       {
+  //         user_id: userData.id,
+  //         name: name,
+  //         description: description,
+  //         members: emailLists,
+  //       },
+  //       {
+  //         headers: {
+  //           'Content-Type': 'application/json; charset=utf-8',
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       }
+  //     )
+  //     .then(function (response) {
+  //       console.log(response);
+  //     });
+  // };
 
   return (
     <Box className=' p-2 flex flex-col gap-5'>
@@ -296,7 +296,7 @@ const StepThree = ({ createContent }) => {
         backgroundColor='#5720DD'
         p='1.5rem'
         color='white'
-        onClick={handleShare}
+        // onClick={handleShare}
       >
         Share Project
       </Button>

@@ -3,6 +3,7 @@ import {
   Button,
   Circle,
   Divider,
+  GridItem,
   HStack,
   Spacer,
   Text,
@@ -13,12 +14,15 @@ import FourdotIcon from '../assets/Icons/FourdotIcon';
 import { AiOutlinePlus } from 'react-icons/ai';
 import TaskItem from './TaskItem';
 
-const TaskCard = () => {
+
+
+const SectionCard = ({title}) => {
+  
   return (
     <>
-      <Box className=' w-[19.75rem] rounded-lg p-4 border-[.07rem] h-fit flex flex-col gap-4 '>
+      <GridItem className=' w-[19.75rem] rounded-lg p-4 border-[.07rem] h-fit flex flex-col gap-4 '>
         <HStack spacing={5}>
-          <Text fontWeight='extrabold'> To do task</Text>
+          <Text fontWeight='extrabold'> {title}</Text>
           <Circle size='2rem' bg='#DCDCDC' fontWeight='extrabold'>
             0
           </Circle>
@@ -27,7 +31,8 @@ const TaskCard = () => {
           <FourdotIcon boxSize={6} />
         </HStack>
         <Divider borderWidth='.1rem' />
-        <TaskItem />
+
+        <TaskItem /> 
         <Box
           as={Button}
           bg='#F5F5F5'
@@ -40,9 +45,9 @@ const TaskCard = () => {
         >
           Add task
         </Box>
-      </Box>
+      </GridItem>
     </>
   );
 };
 
-export default TaskCard;
+export default SectionCard;
