@@ -17,9 +17,8 @@ import { Draggable } from 'react-beautiful-dnd';
 const TaskItem = ({title, description, id, index}) => {
   return (
     <>
-      
       <Draggable draggableId={id} index={index} >
-      {(provided)=> <Box shadow='md'  {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} bg="white">
+      {(provided)=> <Box shadow='xl'  {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} bg="white">
       <Box className='px-4 py-2 flex flex-col justify-between gap-5'>
         <HStack>
           <Text>{title} </Text>

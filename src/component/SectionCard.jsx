@@ -21,7 +21,6 @@ import CreateTask from './CreateTask';
 const SectionCard = ({title, index, id, taskItem}) => {
 
 
-  const onDragEnd = () =>{};
   
   return (
     < >
@@ -37,7 +36,7 @@ const SectionCard = ({title, index, id, taskItem}) => {
         </HStack>
         <Divider borderWidth='.1rem' />
         <Droppable droppableId={title}>
-         {(provided) =>  <Box {...provided.droppableProps}  ref={provided.innerRef}>
+         {(provided) =>  <Box {...provided.droppableProps}  ref={provided.innerRef} className='flex flex-col gap-2'>
           {
               taskItem.map((item, i) => <TaskItem key={item.id} title={item.title} id={item.id} description={item.description} index= {i} /> )
           }
