@@ -12,18 +12,22 @@ import {
 import React from 'react';
 import MoreIcon from '../assets/Icons/MoreIcon';
 import CalenderIcon from '../assets/Icons/CalenderIcon';
+import { Draggable } from 'react-beautiful-dnd';
 
-const TaskItem = () => {
+const TaskItem = ({title, description, id, index}) => {
   return (
-    <Box shadow='md'>
+    <>
+      
+      <Draggable draggableId={id} index={index} >
+      {(provided)=> <Box shadow='md'  {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} bg="white">
       <Box className='px-4 py-2 flex flex-col justify-between gap-5'>
         <HStack>
-          <Text>Project Research</Text>
+          <Text>{title} </Text>
           <Spacer />
           <Icon as={MoreIcon} transform='rotate(90deg)' />
         </HStack>
         <Text color='#767676'>
-          Make research on the project we are about to start...
+          {description}
         </Text>
         <HStack>
           <Box bg='#F5F5F5' className='flex p-2 gap-2 items-center rounded-md'>
@@ -50,11 +54,16 @@ const TaskItem = () => {
           width='8rem'
           borderRadius={5}
         />
-        <Text fontSize='xs' fontWeight='bold'>
-          Craududdu
-        </Text>
+        {/* <Text fontSize='xs' fontWeight='bold'>
+          
+        </Text> */}
       </HStack>
-    </Box>
+    </Box>}
+    </Draggable>
+    
+    </>
+  
+    
   );
 };
 

@@ -12,10 +12,13 @@ const CreateSection = () => {
   
     const handleAddSection = (e) => {
       e.preventDefault();
-      const sectionName = initialRef.current.value;
-      dispatch(addSection(sectionName));
+      const sectionItem = {
+        name: initialRef.current.value,
+        tasks:[]
+      }
+      dispatch(addSection(sectionItem));
       initialRef.current.value = ''
-    
+      onClose()
     }
 
   return (
@@ -44,23 +47,25 @@ const CreateSection = () => {
         onClose={onClose}
       >
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Create Section</ModalHeader>
+        <ModalContent >
+          <form onSubmit={handleAddSection}>
+            <ModalHeader>Create Section</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
               <FormLabel>Section Name</FormLabel>
-              <Input ref={initialRef} type='text'  placeholder='To do ..' />
+              <Input ref={initialRef} type='text'  placeholder='To do ..' required />
             </FormControl>
 
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={handleAddSection}>
+            <Button colorScheme='blue' mr={3} onSubmit={handleAddSection} type='submit'>
               Add
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={onClose} >Cancel</Button>
           </ModalFooter>
+          </form>
         </ModalContent>
       </Modal>
     </>
