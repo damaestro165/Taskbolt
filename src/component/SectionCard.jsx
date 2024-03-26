@@ -20,6 +20,7 @@ import CreateTask from './CreateTask';
 
 const SectionCard = ({title, index, id, taskItem}) => {
 
+
   const onDragEnd = () =>{};
   
   return (
@@ -28,7 +29,7 @@ const SectionCard = ({title, index, id, taskItem}) => {
         <HStack spacing={5}>
           <Text fontWeight='extrabold'> {title}</Text>
           <Circle size='2rem' bg='#DCDCDC' fontWeight='extrabold'>
-            {taskItem.lenght || 0 }
+            {taskItem.length}
           </Circle>
           <Spacer />
           <CreateIcon boxSize={6} />
